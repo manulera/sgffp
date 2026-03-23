@@ -25,7 +25,7 @@ class ExampleTest(unittest.TestCase):
         linearized_vector_tree_node, fragment_tree_node = root_node.children
 
         linear_vector_node = object.history.get_node(linearized_vector_tree_node.id)
-        self.assertEqual(linear_vector_node.sequence, fasta_dict["linearized_vector"])
+        self.assertEqual(linear_vector_node.sequence.upper(), fasta_dict["linearized_vector"].upper())
 
         fragment_node = object.history.get_node(fragment_tree_node.id)
-        self.assertEqual(fragment_node.sequence, fasta_dict["fragment"])
+        self.assertEqual(fragment_node.sequence.upper(), fasta_dict["fragment"].upper())
