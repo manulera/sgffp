@@ -336,6 +336,12 @@ class TestDnaToOctet:
         result = writer._dna_to_octet("gatc")
         assert result == bytes([0b00011011])
 
+    def test_dna_to_octet_partial_tail_is_right_aligned(self):
+        """Final partial byte is packed into the low bits."""
+        writer = SgffWriter(BytesIO())
+        result = writer._dna_to_octet("TCG")
+        assert result == bytes([0b00101100])
+
 
 # =============================================================================
 # Compressed DNA Tests
