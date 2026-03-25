@@ -5,6 +5,7 @@ Tests for parser functions in sgffp.parsers
 import struct
 import lzma
 from io import BytesIO
+from unittest import TestCase
 
 
 from sgffp.parsers import (
@@ -30,7 +31,7 @@ from sgffp.parsers import (
 # =============================================================================
 
 
-class TestReadHeader:
+class TestReadHeader(TestCase):
     def test_read_header_valid(self):
         """Read valid TLV header"""
         data = bytes([10]) + struct.pack(">I", 100)
@@ -47,7 +48,7 @@ class TestReadHeader:
         assert block_length is None
 
 
-class TestOctetToDna:
+class TestOctetToDna(TestCase):
     def test_octet_to_dna_gatc(self):
         """2-bit encoding: G=0, A=1, T=2, C=3"""
         # 0b00011011 = G(00), A(01), T(10), C(11) = GATC
@@ -86,7 +87,7 @@ class TestOctetToDna:
 # =============================================================================
 
 
-class TestParseSequence:
+class TestParseSequence(TestCase):
     def test_parse_sequence_basic(self):
         """Parse basic DNA sequence"""
         # props=0, sequence="ATCG"
@@ -156,7 +157,7 @@ class TestParseSequence:
         assert result["length"] == 0
 
 
-class TestParseCompressedDna:
+class TestParseCompressedDna(TestCase):
     def test_parse_compressed_dna(self):
         """Parse 2-bit compressed DNA"""
         # Build compressed block:
@@ -217,7 +218,7 @@ class TestParseCompressedDna:
 # =============================================================================
 
 
-class TestParseXml:
+class TestParseXml(TestCase):
     def test_parse_xml_valid(self):
         """Valid XML parsed to dict"""
         xml = b"<Root><Child>value</Child></Root>"
@@ -249,7 +250,7 @@ class TestParseXml:
         assert result is None
 
 
-class TestParseLzmaXml:
+class TestParseLzmaXml(TestCase):
     def test_parse_lzma_xml_valid(self):
         """LZMA-compressed XML"""
         xml = b"<Root><Item>test</Item></Root>"
@@ -264,7 +265,7 @@ class TestParseLzmaXml:
         assert result is None
 
 
-class TestParseLzmaNested:
+class TestParseLzmaNested(TestCase):
     def test_parse_lzma_nested(self):
         """LZMA with nested TLV blocks"""
         # Create a simple TLV block: type 0 (sequence), length 5, data
@@ -288,7 +289,7 @@ class TestParseLzmaNested:
 # =============================================================================
 
 
-class TestParseFeatures:
+class TestParseFeatures(TestCase):
     def test_parse_features_single(self):
         """Parse single feature"""
         xml = b"""<Features>
@@ -302,6 +303,22 @@ class TestParseFeatures:
         assert len(result["features"]) == 1
         assert result["features"][0]["name"] == "test"
         assert result["features"][0]["type"] == "gene"
+
+    def test_parse_features_origin_spanning(self):
+        """Parse origin spanning feature"""
+        xml = b"""<Features>
+            <Feature name="test" type="gene" directionality="1">
+                <Segment range="100-25" color="#FF0000"/>
+            </Feature>
+        </Features>"""
+        result = parse_features(xml)
+        assert result is not None
+        assert "features" in result
+        assert len(result["features"]) == 1
+        assert result["features"][0]["name"] == "test"
+        assert result["features"][0]["type"] == "gene"
+        assert result["features"][0]["start"] == 99
+        assert result["features"][0]["end"] == 25
 
     def test_parse_features_multiple(self):
         """Parse multiple features"""
@@ -386,7 +403,7 @@ class TestParseFeatures:
 # =============================================================================
 
 
-class TestParseZtr:
+class TestParseZtr(TestCase):
     def test_parse_ztr_valid_magic(self):
         """Valid ZTR magic bytes accepted"""
         # Minimal ZTR: magic + version (2 bytes)
@@ -412,7 +429,7 @@ class TestParseZtr:
 # =============================================================================
 
 
-class TestParseHistoryNode:
+class TestParseHistoryNode(TestCase):
     def test_parse_history_node_basic(self):
         """Basic history node parsing"""
         # node_index (4 bytes) + sequence_type (1 byte)
@@ -434,7 +451,7 @@ class TestParseHistoryNode:
 # =============================================================================
 
 
-class TestScheme:
+class TestScheme(TestCase):
     def test_scheme_has_expected_types(self):
         """SCHEME contains all expected block types"""
         expected = {0, 1, 5, 6, 7, 8, 10, 11, 14, 16, 17, 18, 20, 21, 28, 29, 30, 32, 34}
@@ -475,7 +492,7 @@ class TestScheme:
 # =============================================================================
 
 
-class TestParseBlocks:
+class TestParseBlocks(TestCase):
     def test_parse_blocks_single(self):
         """Parse single TLV block"""
         # Block type 0 (sequence), length, data
@@ -544,7 +561,7 @@ class TestParseBlocks:
 # =============================================================================
 
 
-class TestParseLzmaJson:
+class TestParseLzmaJson(TestCase):
     def test_parse_lzma_json_valid(self):
         """Parse valid LZMA-compressed JSON"""
         import json
