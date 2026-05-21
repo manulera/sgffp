@@ -79,9 +79,27 @@ Uncompressed DNA sequence with property flags.
 | 1 | 3 | Reserved (always 0x000000) |
 | 4 | 1 | `strandedness_flag` — 1 = double-stranded |
 | 5 | 3 | Reserved (always 0x000000) |
-| 8 | 2 | `property_flags` (big-endian uint16) — 1 = default, 257 = extended |
+| 8 | 2 | `property_flags` (big-endian uint16) — 1 = default, 257 = extended, 1027 = extended with ambiguous/prefix tail |
 | 10 | 2 | Reserved (always 0x0000) |
-| 12 | 2 | `header_seq_length` (big-endian uint16) — matches `uncompressed_length` |
+| 12 | 2 | `header_seq_length` (big-endian uint16) — usually matches `uncompressed_length`; for prefix extended layouts it is the leading `N` run length |
+
+**Prefix extended payload** (when `property_flags & 0x400` or first payload byte is `0x01`):
+
+| Offset | Size | Description |
+|--------|------|-------------|
+| 0 | 1 | `0x01` prefix marker |
+| 1 | 4 | `tail_start` (big-endian uint32) — sequence index where inline ambiguous encoding begins |
+| 5 | N | 2-bit core for `(uncompressed_length - header_seq_length)` bases |
+| 5+N | M | Case overlay suffix (20-byte header + type `0x09` records; junction uint16 BE pairs delimit lowercase spans). The first bytes of the overlay may also hold 2-bit-encoded bases for the tail segment that does not fit after the inline resume point. |
+
+**Inline markers in the core** (at `tail_start` in practice):
+
+| Pattern | Meaning |
+|---------|---------|
+| `05 03 00 00 00` | Ambiguous run: `G` + (`a` × byte[1]) + (`N` × remaining positions up to 8 bases) |
+| `04 XX 00 00 00` | Resume 2-bit stream after `5 + XX` bytes (pad byte at offset +1) |
+
+Decoding extended history nodes: decode the core as usual for the prefix, replace the ambiguous run from the `05` marker, then build the post-`tail_start` tail from (1) resumed core bits after the `04` marker and (2) any remaining bases from the start of the case overlay blob. Apply lowercase spans from overlay junction records; long tails may omit the final junction, in which case lowercase runs from `last_junction + 16` through `length - 12` (keeping a terminal 11-base uppercase motif such as `CCATAGAGACC`).
 
 **2-bit encoding** (2 bits per base, 4 bases per byte, MSB first for full bytes):
 

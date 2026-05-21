@@ -67,6 +67,135 @@ def octet_to_dna(raw_data: bytes, base_count: int) -> bytes:
     return bytes(result[:base_count])
 
 
+_AMBIGUOUS_INLINE_PREFIX = b"\x05\x03\x00\x00\x00"
+_RESUME_INLINE_PREFIX = 0x04
+
+
+def _find_inline_markers(core: bytes) -> Tuple[int, int, int]:
+    """Return (ambiguous_marker_pos, resume_marker_pos, resume_data_pos)."""
+    ambig = core.find(_AMBIGUOUS_INLINE_PREFIX)
+    if ambig < 0:
+        return -1, -1, -1
+    resume = core.find(bytes([_RESUME_INLINE_PREFIX]), ambig)
+    if resume < 0 or resume + 5 > len(core):
+        return ambig, -1, -1
+    pad = core[resume + 1]
+    return ambig, resume, resume + 5 + pad
+
+
+def _ambiguous_run_from_marker(core: bytes, ambig_pos: int) -> str:
+    """Decode the 8-base ambiguous run from an inline ``05 03`` marker."""
+    if ambig_pos < 0 or ambig_pos + 2 >= len(core):
+        return "N" * 8
+    lowercase_a_count = core[ambig_pos + 1]
+    if lowercase_a_count > 7:
+        lowercase_a_count = 0
+    return "G" + ("a" * lowercase_a_count) + ("N" * (7 - lowercase_a_count))
+
+
+def _apply_case_overlays(
+    sequence: List[str],
+    overlay: bytes,
+    leading_n: int,
+    tail_start: Optional[int] = None,
+) -> None:
+    """Apply lowercase spans from the extended-format suffix overlay."""
+    if len(overlay) < 20:
+        return
+
+    starts: List[int] = []
+    pos = 20
+    while pos + 4 <= len(overlay) and overlay[pos + 3] == 0x09:
+        starts.append(overlay[pos] | (overlay[pos + 1] << 8))
+        pos += 4
+
+    junctions: List[int] = []
+    for k in range(len(starts) - 1):
+        jpos = 20 + (k + 1) * 4 - 1
+        junctions.append((overlay[jpos] << 8) | overlay[jpos + 1])
+    if len(overlay) >= 2 and overlay[-2] == 0x09:
+        junctions.append((overlay[-2] << 8) | overlay[-1])
+
+    spans: List[Tuple[int, int]] = [(leading_n, leading_n + 2)]
+    if starts and junctions:
+        spans.append((starts[0], junctions[0]))
+    if tail_start is not None:
+        for i in range(len(junctions) - 1):
+            start, end = junctions[i], junctions[i + 1]
+            if end > start and start >= tail_start and (end - start <= 3 or end - start >= 40):
+                spans.append((start, end))
+        # Long tails may omit the final junction; keep the last 11 bases (e.g. CCATAGAGACC) uppercase.
+        if junctions and junctions[-1] + 16 < len(sequence) - 11:
+            spans.append((junctions[-1] + 16, len(sequence) - 12))
+
+    for start, end in spans:
+        for idx in range(start, end + 1):
+            if idx < len(sequence) and sequence[idx].isalpha():
+                sequence[idx] = sequence[idx].lower()
+
+
+def _decode_extended_tail(
+    core: bytes, overlay: bytes, resume_data_pos: int, tail_bases: int
+) -> str:
+    """Decode the post-inline tail from resumed core bits plus overlay suffix."""
+    if tail_bases <= 0:
+        return ""
+
+    post = ""
+    if resume_data_pos > 0:
+        post = octet_to_dna(core[resume_data_pos:], tail_bases).decode("ascii")
+
+    suffix_bases = tail_bases - len(post)
+    if suffix_bases <= 0:
+        return post
+
+    suffix = octet_to_dna(overlay, suffix_bases).decode("ascii")
+    return post + suffix
+
+
+def _decode_extended_compressed(
+    payload: bytes,
+    uncompressed_length: int,
+    header_seq_length: int,
+) -> str:
+    """Decode prefix-style extended compressed DNA (format_version 31, pf 1027)."""
+    tail_start = struct.unpack(">I", payload[1:5])[0]
+    leading_n = header_seq_length
+    body_bases = uncompressed_length - leading_n
+    core_bytes = (body_bases * 2 + 7) // 8
+    core = payload[5 : 5 + core_bytes]
+    overlay = payload[5 + core_bytes :]
+
+    body = octet_to_dna(core, body_bases).decode("ascii")
+    ambig_pos, _resume_pos, resume_data_pos = _find_inline_markers(core)
+    ambig_run = _ambiguous_run_from_marker(core, ambig_pos)
+    tail_bases = uncompressed_length - tail_start - len(ambig_run)
+    tail = _decode_extended_tail(core, overlay, resume_data_pos, tail_bases)
+
+    sequence: List[str] = list("N" * leading_n + body)
+    _apply_case_overlays(sequence, overlay, leading_n, tail_start=tail_start)
+    if tail_start + len(ambig_run) <= len(sequence):
+        sequence[tail_start : tail_start + len(ambig_run)] = list(ambig_run)
+    tail_begin = tail_start + len(ambig_run)
+    if tail and tail_begin + len(tail) <= len(sequence):
+        sequence[tail_begin : tail_begin + len(tail)] = list(tail)
+    _apply_case_overlays(sequence, overlay, leading_n, tail_start=tail_start)
+    return "".join(sequence)
+
+
+def _is_prefix_extended(
+    payload: bytes, header_seq_length: int, uncompressed_length: int, property_flags: int
+) -> bool:
+    """True for SnapGene extended layouts with a separate prefix/tail stream."""
+    if property_flags & 0x400:
+        return True
+    return (
+        len(payload) >= 5
+        and payload[0] == 0x01
+        and header_seq_length < uncompressed_length
+    )
+
+
 # =============================================================================
 # SEQUENCE PARSERS
 # =============================================================================
@@ -109,9 +238,19 @@ def parse_compressed_dna(data: bytes) -> Dict[str, Any]:
 
     total_bytes = (uncompressed_length * 2 + 7) // 8
     seq_data = data[offset : offset + total_bytes]
+    payload = data[offset:]
+
+    if _is_prefix_extended(
+        payload, header_seq_length, uncompressed_length, property_flags
+    ):
+        sequence = _decode_extended_compressed(
+            payload, uncompressed_length, header_seq_length
+        )
+    else:
+        sequence = octet_to_dna(seq_data, uncompressed_length).decode("ascii")
 
     return {
-        "sequence": octet_to_dna(seq_data, uncompressed_length).decode("ascii"),
+        "sequence": sequence,
         "length": uncompressed_length,
         "format_version": format_version,
         "strandedness_flag": strandedness_flag,

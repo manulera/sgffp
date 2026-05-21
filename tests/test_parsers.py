@@ -5,6 +5,9 @@ Tests for parser functions in sgffp.parsers
 import struct
 import lzma
 from io import BytesIO
+from pathlib import Path
+
+import pytest
 
 
 from sgffp.parsers import (
@@ -218,6 +221,25 @@ class TestParseCompressedDna:
         assert result["strandedness_flag"] == 1
         assert result["property_flags"] == 1
         assert result["header_seq_length"] == 4
+
+    def test_extended_history_sequence_matches_parent_block0(self):
+        """History node pf=1027 decodes like block 0 (prefix N, case, ambiguous tail)."""
+        repo_root = Path(__file__).resolve().parents[1]
+        parent_path = repo_root / "parent.dna"
+        child_path = repo_root / "child.dna"
+        if not parent_path.is_file() or not child_path.is_file():
+            pytest.skip("parent.dna and child.dna fixtures required")
+
+        from sgffp import SgffReader
+
+        parent_seq = SgffReader.from_file(parent_path).blocks[0][0]["sequence"]
+        child = SgffReader.from_file(child_path)
+        node = next(
+            n
+            for n in child.blocks[11]
+            if n.get("length") == len(parent_seq) and n.get("property_flags") == 1027
+        )
+        assert node["sequence"] == parent_seq
 
 
 # =============================================================================
