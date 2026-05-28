@@ -10,32 +10,32 @@ This document describes the binary format of SnapGene `.dna` files based on reve
 
 Every `.dna` file starts with a fixed 19-byte header:
 
-| Offset | Size | Value | Description |
-|--------|------|-------|-------------|
-| 0 | 1 | `0x09` (`\t`) | Magic byte |
-| 1 | 4 | `0x00000E` (14) | Header length (big-endian uint32) |
-| 5 | 8 | `SnapGene` | ASCII title |
-| 13 | 2 | varies | `type_of_sequence` (big-endian uint16) |
-| 15 | 2 | varies | `export_version` (big-endian uint16) |
-| 17 | 2 | varies | `import_version` (big-endian uint16) |
+| Offset | Size | Value           | Description                            |
+| ------ | ---- | --------------- | -------------------------------------- |
+| 0      | 1    | `0x09` (`\t`)   | Magic byte                             |
+| 1      | 4    | `0x00000E` (14) | Header length (big-endian uint32)      |
+| 5      | 8    | `SnapGene`      | ASCII title                            |
+| 13     | 2    | varies          | `type_of_sequence` (big-endian uint16) |
+| 15     | 2    | varies          | `export_version` (big-endian uint16)   |
+| 17     | 2    | varies          | `import_version` (big-endian uint16)   |
 
 **type_of_sequence values:**
 
 | Value | Meaning |
-|-------|---------|
-| 1 | DNA |
-| 2 | Protein |
-| 7 | RNA |
+| ----- | ------- |
+| 1     | DNA     |
+| 2     | Protein |
+| 7     | RNA     |
 
 ## TLV Block Format
 
 After the header, the file contains a sequence of TLV (Type-Length-Value) blocks:
 
-| Field | Size | Description |
-|-------|------|-------------|
-| type | 1 byte | Block type ID (unsigned) |
-| length | 4 bytes | Data length (big-endian uint32) |
-| data | `length` bytes | Block payload |
+| Field  | Size           | Description                     |
+| ------ | -------------- | ------------------------------- |
+| type   | 1 byte         | Block type ID (unsigned)        |
+| length | 4 bytes        | Data length (big-endian uint32) |
+| data   | `length` bytes | Block payload                   |
 
 Blocks appear in any order. Some types can appear multiple times (e.g., block 11 for each history node, block 16 for each trace). Unknown block types should be skipped.
 
@@ -45,56 +45,153 @@ Blocks appear in any order. Some types can appear multiple times (e.g., block 11
 
 Uncompressed DNA sequence with property flags.
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 1 | Property flags byte |
-| 1 | N | ASCII sequence data |
+| Offset | Size | Description         |
+| ------ | ---- | ------------------- |
+| 0      | 1    | Property flags byte |
+| 1      | N    | ASCII sequence data |
 
 **Property flags (bitmask):**
 
-| Bit | Mask | Meaning |
-|-----|------|---------|
-| 0 | `0x01` | Circular topology (0=linear) |
-| 1 | `0x02` | Double-stranded (0=single) |
-| 2 | `0x04` | Dam methylated |
-| 3 | `0x08` | Dcm methylated |
-| 4 | `0x10` | EcoKI methylated |
+| Bit | Mask   | Meaning                      |
+| --- | ------ | ---------------------------- |
+| 0   | `0x01` | Circular topology (0=linear) |
+| 1   | `0x02` | Double-stranded (0=single)   |
+| 2   | `0x04` | Dam methylated               |
+| 3   | `0x08` | Dcm methylated               |
+| 4   | `0x10` | EcoKI methylated             |
 
 ### Block 1 — Compressed DNA Sequence
 
 2-bit encoded DNA used in history nodes for compact storage.
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | `compressed_length` (big-endian uint32) — total bytes of remaining data |
-| 4 | 4 | `uncompressed_length` (big-endian uint32) — number of bases |
-| 8 | 14 | Metadata header (see below) |
-| 22 | N | 2-bit GATC-encoded sequence data |
+| Offset | Size | Description                                                             |
+| ------ | ---- | ----------------------------------------------------------------------- |
+| 0      | 4    | `compressed_length` (big-endian uint32) — total bytes of remaining data |
+| 4      | 4    | `uncompressed_length` (big-endian uint32) — number of bases             |
+| 8      | 14   | Metadata header (see below)                                             |
+| 22     | N    | 2-bit GATC-encoded sequence data                                        |
 
 **14-byte metadata header:**
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 1 | `format_version` — typically 30 (0x1e) |
-| 1 | 3 | Reserved (always 0x000000) |
-| 4 | 1 | `strandedness_flag` — 1 = double-stranded |
-| 5 | 3 | Reserved (always 0x000000) |
-| 8 | 2 | `property_flags` (big-endian uint16) — 1 = default, 257 = extended |
-| 10 | 2 | Reserved (always 0x0000) |
-| 12 | 2 | `header_seq_length` (big-endian uint16) — matches `uncompressed_length` |
+| Offset | Size | Description                                                             |
+| ------ | ---- | ----------------------------------------------------------------------- |
+| 0      | 1    | `format_version` — typically 30 (0x1e)                                  |
+| 1      | 3    | Reserved (always 0x000000)                                              |
+| 4      | 1    | `strandedness_flag` — 1 = double-stranded                               |
+| 5      | 3    | Reserved (always 0x000000)                                              |
+| 8      | 2    | `property_flags` (big-endian uint16) — 1 = default, 257 = extended      |
+| 10     | 2    | Reserved (always 0x0000)                                                |
+| 12     | 2    | `header_seq_length` (big-endian uint16) — matches `uncompressed_length` |
 
 **2-bit encoding** (2 bits per base, 4 bases per byte, MSB first for full bytes):
 
 | Bits | Base |
-|------|------|
-| 00 | G |
-| 01 | A |
-| 10 | T |
-| 11 | C |
+| ---- | ---- |
+| 00   | G    |
+| 01   | A    |
+| 10   | T    |
+| 11   | C    |
 
 Total bytes = ceil(uncompressed_length * 2 / 8).
 
 When the final byte holds fewer than 4 bases, SnapGene right-aligns that partial tail in the low bits of the byte. For example, a 3-base tail uses bit pairs at offsets 4, 2, and 0.
+
+#### Format Version 2 History Variant
+
+When `format_version == 2`, the history snapshot does **not** store the whole
+sequence as one flat 2-bit stream. It uses a mixed payload made of:
+
+1. a normal 2-bit DNA chunk for the first stretch that only contains `A/C/G/T`
+2. one or more instructions for ambiguous bases such as `N`, `W`, `R`, `Y`, etc.
+3. optional extra 2-bit DNA chunks after those ambiguity runs
+4. lowercase span metadata at the end
+
+In plain language, SnapGene stores the easy parts as normal DNA, and only switches to a small side format when it needs to represent ambiguity codes or lowercase letters.
+
+Observed instruction opcodes:
+
+| Opcode | Meaning                              |
+| ------ | ------------------------------------ |
+| `0x01` | Next chunk is plain `A/C/G/T` DNA    |
+| `0x02` | Next chunk is an ambiguity/IUPAC run |
+| `0x03` | Next chunk is a run of `N`           |
+
+For opcodes `0x01`, `0x02`, and `0x03`, the opcode is followed by a 4-byte big-endian base count.
+
+##### `0x01` — Plain DNA chunk
+
+After the count, SnapGene stores that many bases using the normal 2-bit `G/A/T/C` packing described above.
+
+##### `0x02` — Ambiguity/IUPAC run
+
+After the count, SnapGene stores ambiguity symbols packed as 4-bit nibbles, two symbols per byte.
+
+Observed code mapping:
+
+| Nibble | Symbol |
+| ------ | ------ |
+| `0x04` | `N`    |
+| `0x05` | `B`    |
+| `0x06` | `D`    |
+| `0x07` | `H`    |
+| `0x08` | `K`    |
+| `0x09` | `M`    |
+| `0x0A` | `R`    |
+| `0x0B` | `S`    |
+| `0x0C` | `V`    |
+| `0x0D` | `W`    |
+| `0x0E` | `Y`    |
+
+If the run length is odd, the final symbol uses the low nibble of the last byte.
+
+##### `0x03` — `N` run
+
+This is a compact shortcut for a run of `N` bases. After the 4-byte count there is no extra symbol data; the count alone tells you how many `N` characters to append.
+
+##### Lowercase span metadata
+
+Any bytes left after the instruction stream are lowercase spans stored as big-endian uint32 start/end pairs:
+
+| Field | Size | Description             |
+| ----- | ---- | ----------------------- |
+| start | 4    | 0-based inclusive start |
+| end   | 4    | 0-based inclusive end   |
+
+Each pair means “make this range lowercase after decoding the sequence text”.
+
+Example:
+
+- decoded uppercase sequence: `ACGTNNNNACGT`
+- span pair `(4, 7)`
+- final sequence: `ACGTnnnnACGT`
+
+##### Practical decoding approach
+
+The format version 2 payload does not explicitly say how long the first plain
+DNA chunk is, so the parser has to infer it.
+
+The successful strategy used in `sgffp` is:
+
+1. try possible lengths for the initial plain `A/C/G/T` chunk
+2. parse the rest as opcode/count records
+3. stop when the rebuilt sequence reaches the expected base count
+4. treat any remaining bytes as lowercase span pairs
+5. accept the parse only if the final sequence length and span structure are both valid
+
+This keeps the format version 2 history sequence self-contained. It does not
+need any fallback from block 0 or from the history tree model.
+
+##### Practical encoding approach
+
+When writing `format_version == 2` history nodes, `sgffp` rebuilds the payload
+from the decoded sequence string:
+
+1. emit the first `A/C/G/T` stretch as plain 2-bit DNA
+2. emit ambiguity runs as either `0x02` IUPAC runs or `0x03` `N` runs
+3. emit later `A/C/G/T` stretches as `0x01` DNA chunks
+4. append lowercase start/end span pairs at the end
+
+That is enough to round-trip both ambiguity symbols and capitalization without relying on preserved raw bytes.
 
 ### Block 5 — Primers (XML)
 
@@ -169,52 +266,52 @@ The entire block is LZMA-compressed. After decompression, it contains XML with a
 
 **Node fields:**
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `ID` | string | Unique node identifier (integer as string) |
-| `name` | string | Sequence filename |
-| `type` | string | `"DNA"`, `"RNA"`, or `"Protein"` |
-| `seqLen` | string | Sequence length (integer as string) |
-| `circular` | string | `"0"` (linear) or `"1"` (circular) |
-| `strandedness` | string | `"single"` or `"double"` |
-| `operation` | string | Operation that created this state (see below) |
-| `upstreamStickiness` | string | Upstream sticky end length |
-| `downstreamStickiness` | string | Downstream sticky end length |
-| `upstreamModification` | string | e.g., `"Unmodified"`, `"FivePrimePhosphorylated"` |
-| `downstreamModification` | string | e.g., `"Unmodified"` |
-| `resurrectable` | string | `"1"` if the user can restore this state |
+| Field                    | Type   | Description                                       |
+| ------------------------ | ------ | ------------------------------------------------- |
+| `ID`                     | string | Unique node identifier (integer as string)        |
+| `name`                   | string | Sequence filename                                 |
+| `type`                   | string | `"DNA"`, `"RNA"`, or `"Protein"`                  |
+| `seqLen`                 | string | Sequence length (integer as string)               |
+| `circular`               | string | `"0"` (linear) or `"1"` (circular)                |
+| `strandedness`           | string | `"single"` or `"double"`                          |
+| `operation`              | string | Operation that created this state (see below)     |
+| `upstreamStickiness`     | string | Upstream sticky end length                        |
+| `downstreamStickiness`   | string | Downstream sticky end length                      |
+| `upstreamModification`   | string | e.g., `"Unmodified"`, `"FivePrimePhosphorylated"` |
+| `downstreamModification` | string | e.g., `"Unmodified"`                              |
+| `resurrectable`          | string | `"1"` if the user can restore this state          |
 
 **Attribute order convention:** SnapGene expects attributes in this order: `name`, `type`, `seqLen`, `strandedness`, `ID`, `circular`, `[resurrectable]`, `operation`.
 
 **Operation types:**
 
-| Operation | Category | Description |
-|-----------|----------|-------------|
-| `invalid` | base | Original/imported file (leaf node) |
-| `makeDna` | create | Created new DNA sequence |
-| `makeRna` | create | Created new RNA sequence |
-| `makeProtein` | create | Created new protein sequence |
-| `amplifyFragment` | cloning | PCR amplification |
-| `insertFragment` | cloning | Single fragment insertion |
-| `insertFragments` | cloning | Multiple fragment insertion |
-| `replace` | edit | Sequence edit/substitution |
-| `digest` | cloning | Restriction digest |
-| `ligateFragments` | cloning | Ligation of fragments |
-| `gatewayLRCloning` | cloning | Gateway LR reaction |
-| `gatewayBPCloning` | cloning | Gateway BP reaction |
-| `gibsonAssembly` | cloning | Gibson assembly |
-| `goldenGateAssembly` | cloning | Golden Gate assembly |
-| `restrictionCloning` | cloning | Restriction cloning |
-| `taCloning` | cloning | TA cloning |
-| `topoCloning` | cloning | TOPO cloning |
-| `inFusionCloning` | cloning | In-Fusion cloning |
-| `flip` | edit | Reverse complement |
-| `newFileFromSelection` | edit | Extract subsequence to new file |
-| `primerDirectedMutagenesis` | edit | Site-directed mutagenesis |
-| `changeMethylation` | metadata | Change methylation status |
-| `changePhosphorylation` | metadata | Change phosphorylation status |
-| `changeStrandedness` | metadata | Change single/double stranded |
-| `changeTopology` | metadata | Change linear/circular topology |
+| Operation                   | Category | Description                        |
+| --------------------------- | -------- | ---------------------------------- |
+| `invalid`                   | base     | Original/imported file (leaf node) |
+| `makeDna`                   | create   | Created new DNA sequence           |
+| `makeRna`                   | create   | Created new RNA sequence           |
+| `makeProtein`               | create   | Created new protein sequence       |
+| `amplifyFragment`           | cloning  | PCR amplification                  |
+| `insertFragment`            | cloning  | Single fragment insertion          |
+| `insertFragments`           | cloning  | Multiple fragment insertion        |
+| `replace`                   | edit     | Sequence edit/substitution         |
+| `digest`                    | cloning  | Restriction digest                 |
+| `ligateFragments`           | cloning  | Ligation of fragments              |
+| `gatewayLRCloning`          | cloning  | Gateway LR reaction                |
+| `gatewayBPCloning`          | cloning  | Gateway BP reaction                |
+| `gibsonAssembly`            | cloning  | Gibson assembly                    |
+| `goldenGateAssembly`        | cloning  | Golden Gate assembly               |
+| `restrictionCloning`        | cloning  | Restriction cloning                |
+| `taCloning`                 | cloning  | TA cloning                         |
+| `topoCloning`               | cloning  | TOPO cloning                       |
+| `inFusionCloning`           | cloning  | In-Fusion cloning                  |
+| `flip`                      | edit     | Reverse complement                 |
+| `newFileFromSelection`      | edit     | Extract subsequence to new file    |
+| `primerDirectedMutagenesis` | edit     | Site-directed mutagenesis          |
+| `changeMethylation`         | metadata | Change methylation status          |
+| `changePhosphorylation`     | metadata | Change phosphorylation status      |
+| `changeStrandedness`        | metadata | Change single/double stranded      |
+| `changeTopology`            | metadata | Change linear/circular topology    |
 
 **Nested elements:**
 
@@ -257,12 +354,12 @@ Annotation features with segment ranges, qualifiers, and strand mapping.
 
 **Strand mapping** (from `directionality` attribute):
 
-| Value | Strand |
-|-------|--------|
-| `0` | `.` (none) |
-| `1` | `+` (forward) |
-| `2` | `-` (reverse) |
-| `3` | `=` (both) |
+| Value | Strand        |
+| ----- | ------------- |
+| `0`   | `.` (none)    |
+| `1`   | `+` (forward) |
+| `2`   | `-` (reverse) |
+| `3`   | `=` (both)    |
 
 **Parsed format** (after sgffp processing):
 
@@ -291,22 +388,22 @@ Each block 11 entry stores a sequence snapshot for one history state. Multiple b
 
 **Binary layout:**
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | `node_index` (big-endian uint32) — links to tree node `ID` |
-| 4 | 1 | `sequence_type` (see below) |
-| 5+ | varies | Sequence data (type-dependent) |
-| ... | varies | Nested TLV blocks (node content) |
+| Offset | Size   | Description                                                |
+| ------ | ------ | ---------------------------------------------------------- |
+| 0      | 4      | `node_index` (big-endian uint32) — links to tree node `ID` |
+| 4      | 1      | `sequence_type` (see below)                                |
+| 5+     | varies | Sequence data (type-dependent)                             |
+| ...    | varies | Nested TLV blocks (node content)                           |
 
 **sequence_type values:**
 
-| Value | Format | Description |
-|-------|--------|-------------|
-| 0 | Block 0 format | Uncompressed DNA (4B length + ASCII) |
-| 1 | Block 1 format | Compressed DNA (recommended, SnapGene default) |
-| 21 | Block 0 format | Protein sequence |
-| 29 | — | Modifier-only (no sequence data) |
-| 32 | Block 0 format | RNA sequence |
+| Value | Format         | Description                                    |
+| ----- | -------------- | ---------------------------------------------- |
+| 0     | Block 0 format | Uncompressed DNA (4B length + ASCII)           |
+| 1     | Block 1 format | Compressed DNA (recommended, SnapGene default) |
+| 21    | Block 0 format | Protein sequence                               |
+| 29    | —              | Modifier-only (no sequence data)               |
+| 32    | Block 0 format | RNA sequence                                   |
 
 ### Block 14 — Custom Enzyme Sets (XML)
 
@@ -325,10 +422,10 @@ Container wrapping a ZTR trace (block 18) with optional properties (block 8). Bl
 
 Multiple traces = multiple block 16 entries.
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | Flags (big-endian uint32): `0` = forward, `1` = reverse |
-| 4 | N | Nested TLV blocks (block 18, optionally block 8) |
+| Offset | Size | Description                                             |
+| ------ | ---- | ------------------------------------------------------- |
+| 0      | 4    | Flags (big-endian uint32): `0` = forward, `1` = reverse |
+| 4      | N    | Nested TLV blocks (block 18, optionally block 8)        |
 
 ### Block 17 — Alignable Sequences (XML)
 
@@ -348,35 +445,35 @@ ZTR format (Staden Package) for Sanger sequencing chromatograms.
 
 **Header:**
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 8 | Magic: `\xaeZTR\r\n\x1a\n` |
-| 8 | 2 | Version (typically `\x01\x02`) |
+| Offset | Size | Description                    |
+| ------ | ---- | ------------------------------ |
+| 0      | 8    | Magic: `\xaeZTR\r\n\x1a\n`     |
+| 8      | 2    | Version (typically `\x01\x02`) |
 
 **Chunks** follow the header:
 
-| Field | Size | Description |
-|-------|------|-------------|
-| type | 4 | ASCII chunk type |
-| metadata_length | 4 | Metadata length (big-endian uint32) |
-| metadata | N | Metadata bytes |
-| data_length | 4 | Chunk data length (big-endian uint32) |
-| data | N | Chunk data (may be compressed) |
+| Field           | Size | Description                           |
+| --------------- | ---- | ------------------------------------- |
+| type            | 4    | ASCII chunk type                      |
+| metadata_length | 4    | Metadata length (big-endian uint32)   |
+| metadata        | N    | Metadata bytes                        |
+| data_length     | 4    | Chunk data length (big-endian uint32) |
+| data            | N    | Chunk data (may be compressed)        |
 
 **Compression:** First byte of chunk data: `0x00` = raw, `0x02` = zlib.
 
 **Chunk types:**
 
-| Type | Description | Data format |
-|------|-------------|-------------|
-| `BASE` | Base calls | Padding + ASCII bases |
-| `BPOS` | Base-to-sample positions | Padding + big-endian uint32 per base |
-| `CNF4` | Confidence scores | 1 byte per base |
-| `SMP4` | Combined ACGT samples | Padding + big-endian uint16 (A,C,G,T sequential) |
-| `SAMP` | Single channel samples | Metadata: channel letter. Data: big-endian uint16 |
-| `TEXT` | Metadata key-value pairs | Null-terminated pairs |
-| `CLIP` | Quality clip boundaries | Left uint32 + right uint32 |
-| `COMM` | Comments | ASCII text |
+| Type   | Description              | Data format                                       |
+| ------ | ------------------------ | ------------------------------------------------- |
+| `BASE` | Base calls               | Padding + ASCII bases                             |
+| `BPOS` | Base-to-sample positions | Padding + big-endian uint32 per base              |
+| `CNF4` | Confidence scores        | 1 byte per base                                   |
+| `SMP4` | Combined ACGT samples    | Padding + big-endian uint16 (A,C,G,T sequential)  |
+| `SAMP` | Single channel samples   | Metadata: channel letter. Data: big-endian uint16 |
+| `TEXT` | Metadata key-value pairs | Null-terminated pairs                             |
+| `CLIP` | Quality clip boundaries  | Left uint32 + right uint32                        |
+| `COMM` | Comments                 | ASCII text                                        |
 
 ### Block 20 — Strand Colors (XML)
 
@@ -399,18 +496,18 @@ Embeds arbitrary files (images, documents) inside the `.dna` file. Two sub-forma
 
 **File data block** (one per attached file):
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | `file_id` (big-endian uint32, starts at 1) |
-| 4 | N | Raw file bytes |
+| Offset | Size | Description                                |
+| ------ | ---- | ------------------------------------------ |
+| 0      | 4    | `file_id` (big-endian uint32, starts at 1) |
+| 4      | N    | Raw file bytes                             |
 
 **Manifest block** (one per file, lists all attachments):
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | `0x00000000` (discriminator — file IDs start at 1) |
-| 4 | 4 | `decompressed_size` (big-endian uint32) |
-| 8 | N | zlib-compressed XML |
+| Offset | Size | Description                                        |
+| ------ | ---- | -------------------------------------------------- |
+| 0      | 4    | `0x00000000` (discriminator — file IDs start at 1) |
+| 4      | 4    | `decompressed_size` (big-endian uint32)            |
+| 8      | N    | zlib-compressed XML                                |
 
 **Manifest XML:**
 
@@ -429,20 +526,20 @@ Stores alignment of sequencing traces (block 16) against the reference sequence 
 
 **BGZF structure:** Concatenated gzip blocks, each with a BC extra field containing the block size (BSIZE). Ends with a standard 28-byte EOF marker.
 
-| Component | Description |
-|-----------|-------------|
-| Header block | BAM magic (`BAM\x01`) + SAM header text + reference sequences |
-| Data block(s) | Alignment records (one per trace) |
-| EOF block | 28-byte empty gzip block (standard BAM EOF marker) |
+| Component     | Description                                                   |
+| ------------- | ------------------------------------------------------------- |
+| Header block  | BAM magic (`BAM\x01`) + SAM header text + reference sequences |
+| Data block(s) | Alignment records (one per trace)                             |
+| EOF block     | 28-byte empty gzip block (standard BAM EOF marker)            |
 
 **BAM header:**
 
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0 | 4 | Magic `BAM\x01` |
-| 4 | 4 | `l_text` — SAM header length (little-endian int32) |
-| 8 | l_text | SAM header text (e.g. `@HD\tVN:1.6\tSO::unsorted\n`) |
-| 8+l_text | 4 | `n_ref` — number of reference sequences |
+| Offset   | Size   | Description                                          |
+| -------- | ------ | ---------------------------------------------------- |
+| 0        | 4      | Magic `BAM\x01`                                      |
+| 4        | 4      | `l_text` — SAM header length (little-endian int32)   |
+| 8        | l_text | SAM header text (e.g. `@HD\tVN:1.6\tSO::unsorted\n`) |
+| 8+l_text | 4      | `n_ref` — number of reference sequences              |
 
 Per reference: `l_name` (int32) + name (null-terminated) + `l_ref` (int32, sequence length).
 

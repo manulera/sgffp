@@ -8,27 +8,27 @@ The `SCHEME` dictionary in `sgffp.parsers` maps block type IDs to parser functio
 from sgffp.parsers import SCHEME
 ```
 
-| Block ID | Parser | Content |
-|----------|--------|---------|
-| 0 | `parse_sequence` | DNA sequence |
-| 1 | `parse_compressed_dna` | 2-bit compressed DNA |
-| 5 | `parse_xml` | Primers (XML) |
-| 6 | `parse_xml` | Notes (XML) |
-| 7 | `parse_lzma_xml` | History tree (LZMA XML) |
-| 8 | `parse_xml` | Sequence properties (XML) |
-| 10 | `parse_features` | Features (XML + qualifier extraction) |
-| 11 | `parse_history_node` | History node (binary) |
-| 14 | `parse_xml` | Custom enzyme sets (XML) |
-| 16 | `parse_trace_container` | Trace container (flags + nested TLV) |
-| 17 | `parse_xml` | Alignable sequences (XML) |
-| 18 | `parse_ztr` | ZTR trace data (inside block 16) |
-| 20 | `parse_xml` | Strand colors (XML) |
-| 21 | `parse_sequence` | Protein sequence |
-| 28 | `parse_xml` | Enzyme visibilities (XML) |
-| 29 | `parse_lzma_xml` | History modifier (LZMA XML) |
-| 30 | `parse_lzma_nested` | History node content (LZMA nested TLV) |
-| 32 | `parse_sequence` | RNA sequence |
-| 34 | `parse_lzma_json` | RNA structure predictions (LZMA JSON) |
+| Block ID | Parser                  | Content                                |
+| -------- | ----------------------- | -------------------------------------- |
+| 0        | `parse_sequence`        | DNA sequence                           |
+| 1        | `parse_compressed_dna`  | 2-bit compressed DNA                   |
+| 5        | `parse_xml`             | Primers (XML)                          |
+| 6        | `parse_xml`             | Notes (XML)                            |
+| 7        | `parse_lzma_xml`        | History tree (LZMA XML)                |
+| 8        | `parse_xml`             | Sequence properties (XML)              |
+| 10       | `parse_features`        | Features (XML + qualifier extraction)  |
+| 11       | `parse_history_node`    | History node (binary)                  |
+| 14       | `parse_xml`             | Custom enzyme sets (XML)               |
+| 16       | `parse_trace_container` | Trace container (flags + nested TLV)   |
+| 17       | `parse_xml`             | Alignable sequences (XML)              |
+| 18       | `parse_ztr`             | ZTR trace data (inside block 16)       |
+| 20       | `parse_xml`             | Strand colors (XML)                    |
+| 21       | `parse_sequence`        | Protein sequence                       |
+| 28       | `parse_xml`             | Enzyme visibilities (XML)              |
+| 29       | `parse_lzma_xml`        | History modifier (LZMA XML)            |
+| 30       | `parse_lzma_nested`     | History node content (LZMA nested TLV) |
+| 32       | `parse_sequence`        | RNA sequence                           |
+| 34       | `parse_lzma_json`       | RNA structure predictions (LZMA JSON)  |
 
 Blocks not in SCHEME (2, 3, 13) are skipped — SnapGene regenerates them on import.
 
@@ -60,7 +60,31 @@ Parse uncompressed sequence (blocks 0, 21, 32). Returns:
 
 ### `parse_compressed_dna(data) → Dict`
 
-Parse 2-bit GATC-encoded DNA (block 1). Returns sequence plus metadata header fields (`format_version`, `strandedness_flag`, `property_flags`, `header_seq_length`).
+Parse compressed DNA (block 1). One format is a plain 2-bit GATC stream. When
+`format_version == 2`, the parser instead uses the mixed history payload
+format:
+
+- a leading plain `A/C/G/T` chunk
+- opcode-based ambiguity runs (`0x02`)
+- compact `N` runs (`0x03`)
+- optional later DNA chunks (`0x01`)
+- trailing lowercase span pairs
+
+Returns sequence plus metadata header fields (`format_version`, `strandedness_flag`, `property_flags`, `header_seq_length`).
+
+### Format Version 2 History Decoding
+
+The main reverse-engineering result for `format_version == 2` history DNA is
+that the extra bytes after the core 2-bit data are not noise and are not copied
+from block 0. They are part of the history snapshot itself.
+
+In plain language:
+
+- normal bases are stored compactly as 2-bit DNA
+- ambiguous bases are stored as short instructions
+- lowercase is stored separately as position ranges
+
+The parser decodes those pieces independently and then combines them into the final sequence string. This is why a history node can now correctly return values such as lowercase DNA or `W/S/M/K/R/Y/B/D/H/V/N` directly from block 11.
 
 ### `parse_xml(data) → Dict | None`
 
@@ -115,20 +139,20 @@ Base class for all block-backed models.
 from sgffp.models.base import SgffModel
 ```
 
-| Member | Description |
-|--------|-------------|
-| `BLOCK_IDS` | Tuple of relevant block type IDs |
+| Member          | Description                         |
+| --------------- | ----------------------------------- |
+| `BLOCK_IDS`     | Tuple of relevant block type IDs    |
 | `exists → bool` | `True` if any relevant blocks exist |
 
 ### Protected Helpers
 
-| Method | Description |
-|--------|-------------|
-| `_get_block(block_id) → Any \| None` | Get first item from block |
-| `_set_block(block_id, value)` | Set block value (replaces) |
-| `_get_blocks(block_id) → List` | Get all items from block |
-| `_set_blocks(block_id, values)` | Set all block values |
-| `_remove_block(block_id) → bool` | Remove block entirely |
+| Method                               | Description                |
+| ------------------------------------ | -------------------------- |
+| `_get_block(block_id) → Any \| None` | Get first item from block  |
+| `_set_block(block_id, value)`        | Set block value (replaces) |
+| `_get_blocks(block_id) → List`       | Get all items from block   |
+| `_set_blocks(block_id, values)`      | Set all block values       |
+| `_remove_block(block_id) → bool`     | Remove block entirely      |
 
 ---
 
@@ -140,22 +164,22 @@ Generic base for list-backed models. Extends `SgffModel`.
 from sgffp.models.base import SgffListModel
 ```
 
-| Member | Description |
-|--------|-------------|
-| `items → List[T]` | Lazily loaded item list |
-| `add(item)` | Append item and sync |
-| `remove(idx) → bool` | Remove by index and sync |
-| `clear()` | Remove all items and sync |
-| `len(model)` | Item count |
-| `model[idx]` | Item at index |
-| `for item in model` | Iterate items |
+| Member               | Description               |
+| -------------------- | ------------------------- |
+| `items → List[T]`    | Lazily loaded item list   |
+| `add(item)`          | Append item and sync      |
+| `remove(idx) → bool` | Remove by index and sync  |
+| `clear()`            | Remove all items and sync |
+| `len(model)`         | Item count                |
+| `model[idx]`         | Item at index             |
+| `for item in model`  | Iterate items             |
 
 ### Abstract Methods (subclass must implement)
 
-| Method | Description |
-|--------|-------------|
-| `_load() → List[T]` | Parse items from block storage |
-| `_sync()` | Write items back to block storage |
+| Method              | Description                       |
+| ------------------- | --------------------------------- |
+| `_load() → List[T]` | Parse items from block storage    |
+| `_sync()`           | Write items back to block storage |
 
 ### Subclasses
 
