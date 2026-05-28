@@ -8,3 +8,4 @@ for file in glob.glob("degenerate_examples/*.dna"):
     parent_sequence = sgff.history.get_sequence_at(0)
     print(parent_sequence)
     print(child_sequence)
+    print(parent_sequence == child_sequence)
