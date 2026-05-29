@@ -264,7 +264,7 @@ class TestParseCompressedDna:
         assert result["format_version"] == 2
 
     def test_parse_compressed_dna_format31_explicit_leading_chunk(self):
-        """Format version 31 prepends an implicit NNNN prefix before chunks."""
+        """Format version 31 can omit a leading N-prefix from the payload."""
         header = bytearray(14)
         header[0] = 31
 
@@ -284,6 +284,31 @@ class TestParseCompressedDna:
 
         assert result["sequence"] == "NNNNacgTACG"
         assert result["length"] == 11
+        assert result["format_version"] == 31
+
+    def test_parse_compressed_dna_format31_raw_prefix_and_chunk_tail(self):
+        """Format version 31 can also use a raw DNA prefix before chunk opcodes."""
+        header = bytearray(14)
+        header[0] = 31
+
+        payload = bytes.fromhex(
+            "1b"
+            "0300000002"
+            "0100000004"
+            "1b"
+            "0000000600000009"
+        )
+        data = (
+            struct.pack(">I", 4 + 14 + len(payload))
+            + struct.pack(">I", 10)
+            + bytes(header)
+            + payload
+        )
+
+        result = parse_compressed_dna(data)
+
+        assert result["sequence"] == "GATCNNgatc"
+        assert result["length"] == 10
         assert result["format_version"] == 31
 
 

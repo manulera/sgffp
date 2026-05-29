@@ -182,8 +182,14 @@ def _parse_mixed_dna_stream(
     return sequence, offset
 
 
-def _parse_format2_payload(payload: bytes, seq_length: int) -> Optional[str]:
-    """Parse the format version 2 mixed DNA payload."""
+def _parse_mixed_dna_payload(
+    payload: bytes,
+    seq_length: int,
+    allow_leading_n_prefix: bool = False,
+) -> Optional[str]:
+    """Parse a mixed DNA payload with raw-prefix search and trailing spans."""
+    partial_match: Optional[Tuple[str, List[Tuple[int, int]]]] = None
+
     for initial_len in range(seq_length, -1, -1):
         initial_bytes = (initial_len * 2 + 7) // 8
         if initial_bytes > len(payload):
@@ -197,36 +203,38 @@ def _parse_format2_payload(payload: bytes, seq_length: int) -> Optional[str]:
         sequence, consumed = parsed
         offset = initial_bytes + consumed
 
-        if not sequence or len(sequence) != seq_length:
+        if not sequence or len(sequence) > seq_length:
             continue
 
         lowercase = _decode_format2_lowercase_spans(payload[offset:], seq_length)
         if lowercase is None:
             continue
 
-        return _apply_lowercase_spans(sequence, lowercase)
+        if len(sequence) == seq_length:
+            return _apply_lowercase_spans(sequence, lowercase)
+
+        if allow_leading_n_prefix:
+            missing = seq_length - len(sequence)
+            if all(start >= missing for start, _ in lowercase):
+                partial_match = (sequence, lowercase)
+
+    if allow_leading_n_prefix and partial_match is not None:
+        sequence, lowercase = partial_match
+        missing = seq_length - len(sequence)
+        return _apply_lowercase_spans("N" * missing + sequence, lowercase)
 
     return None
 
 
+def _parse_format2_payload(payload: bytes, seq_length: int) -> Optional[str]:
+    """Parse the format version 2 mixed DNA payload."""
+    return _parse_mixed_dna_payload(payload, seq_length)
+
+
+
 def _parse_format31_payload(payload: bytes, seq_length: int) -> Optional[str]:
     """Parse the format version 31 mixed DNA payload."""
-    if seq_length < 4:
-        return None
-
-    parsed = _parse_mixed_dna_stream(payload, "NNNN")
-    if parsed is None:
-        return None
-
-    sequence, offset = parsed
-    if len(sequence) != seq_length:
-        return None
-
-    lowercase = _decode_format2_lowercase_spans(payload[offset:], seq_length)
-    if lowercase is None:
-        return None
-
-    return _apply_lowercase_spans(sequence, lowercase)
+    return _parse_mixed_dna_payload(payload, seq_length, allow_leading_n_prefix=True)
 
 
 # =============================================================================

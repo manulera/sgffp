@@ -46,15 +46,15 @@ files = [
             },
         ],
     },
-    # {
-    #     "file": "five.dna",
-    #     "expected": [
-    #         {
-    #             "node": 1,
-    #             "sequence": "agcGAGCTCtagctagctactgctagctagctagctaWwWagctagctagctgatcgatcgtatatattatatctattcgtagctagtCATATGcgtactac",
-    #         }
-    #     ],
-    # },
+    {
+        "file": "five.dna",
+        "expected": [
+            {
+                "node": 1,
+                "sequence": "agcGAGCTCtagctagctactgctagctagctagctaWwWagctagctagctgatcgatcgtatatattatatctattcgtagctagtCATATGcgtactac",
+            }
+        ],
+    },
 ]
 
 
