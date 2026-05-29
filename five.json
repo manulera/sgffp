@@ -1,0 +1,1472 @@
+{
+  "cookie": {
+    "type_of_sequence": 1,
+    "export_version": 15,
+    "import_version": 20
+  },
+  "blocks": {
+    "0": [
+      {
+        "sequence": "TTACggcctcgtgatacgcctatttttataggttaatgtcatgataataatggtttcttagacgtcaggtggcacttttcggggaaatgtgcgcggaacccctatttgtttatttttctaaatacattcaaatatgtatccgctcatgagacaataaccctgataaatgcttcaataatattgaaaaaggaagagtatgcgctcacgcaactggtccagaaccttgaccgaacgcagcggtggtaacggcgcagtggcggttttcatggcttgttatgactgtttttttggggtacagtctatgcctcgggcatccaagcagcaagcgcgttacgccgtgggtcgatgtttgatgttatggagcagcaacgatgttacgcagcagggcagtcgccctaaaacaaagttaaacatcatgagggaagcggtgatcgccgaagtatcgactcaactatcagaggtagttggcgtcatcgagcgccatctcgaaccgacgttgctggccgtacatttgtacggctccgcagtggatggcggcctgaagccacacagcgatattgatttgctggttacggtgaccgtaaggcttgatgaaacaacgcggcgagctttgatcaacgaccttttggaaacttcggcttcccctggagagagcgagattctccgcgctgtagaagtcaccattgttgtgcacgacgacatcattccgtggcgttatccagctaagcgcgaactgcaatttggagaatggcagcgcaatgacattcttgcaggtatcttcgagccagccacgatcgacattgatctggctatcttgctgacaaaagcaagagaacatagcgttgccttggtaggtccagcggcggaggaactctttgatccggttcctgaacaggatctatttgaggcgctaaatgaaaccttaacgctatggaactcgccgcccgactgggctggcgatgagcgaaatgtagtgcttacgttgtcccgcatttggtacagcgcagtaaccggcaaaatcgcgccgaaggatgtcgctgccgactgggcaatggagcgcctgccggcccagtatcagcccgtcatacttgaagctagacaggcttatcttggacaagaagaagatcgcttggcctcgcgcgcagatcagttggaagaatttgtccattacgtaaaaggcgagatcaccaaggtagtcggcaaataactgtcagaccaagtttactcatatatactttagattgatttaaaacttcatttttaatttaaaaggatctaggtgaagatcctttttgataatctcatgaccaaaatcccttaacgtgagttttcgttccactgagcgtcagaccccgtagaaaagatcaaaggatcttcttgagatcctttttttctgcgcgtaatctgctgcttgcaaacaaaaaaaccaccgctaccagcggtggtttgtttgccggatcaagagctaccaactctttttccgaaggtaactggcttcagcagagcgcagataccaaatactgtccttctagtgtagccgtagttaggccaccacttcaagaactctgtagcaccgcctacatacctcgctctgctaatcctgttaccagtggctgctgccagtggcgataagtcgtgtcttaccgggttggactcaagacgatagttaccggataaggcgcagcggtcgggctgaacggggggttcgtgcacacagcccagcttggagcgaacgacctacaccgaactgagatacctacagcgtgagctatgagaaagcgccacgcttcccgaagggagaaaggcggacaggtatccggtaagcggcagggtcggaacaggagagcgcacgagggagcttccagggggaaacgcctggtatctttatagtcctgtcgggtttcgccacctctgacttgagcgtcgatttttgtgatgctcgtcaggggggcggagcctatggaaaaacgccagcaacgcggcctttttacggttcctggccttttgctggccttttgctcacatgttctttcctgcgttatcccctgattctgtggataaccgtattaccgcctttgagtgagctgataccgctcgccgcagccgaacgaccgagcgcagcgagtcagtgagcgaggaagcggaagagcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaACTACAGGAAACAGCTATGACTCGCAAATGGGCGGTAGGCGTGTATGCCATAGCATTTTTATCCGAATTCGGATCCCTGCAGAAGCTTCTCGAGTCTAGAGATATCCCCGGGaaaAGGTttgtcttcTGCCgcagctggcacgacaggtttgccgactggaaagcgggcagtgagcgcaacgcaattaatgtgagttagctcactcattaggcaccccaggctttacactttatgcttccggctcgtatgttgtgtggaattgtgagcggataacaatttcacacaggaaacagctatgaccatgattacgccaagcttgcatgcctgcaggtcgactctagaggatccccgggtaccgagctCtagctagctactgctagctagctagctaWwWagctagctagctgatcgatcgtatatattatatctattcgtagctagtCAtatggtgcactctcagtacaatctgctctgatgccgcatagttaagccagccccgacacccgccaacacccgctgacgcgccctgacgggcttgtctgctcccggcatccgcttacagacaagctgtgacGCAAgaagacaaTTCGtttGGATCCGAATTCAAGCTTCTGCAGTCTAGACTCGAGCCCGGGGATATCTACAACGTCGTGACTGGGAAAACTCCTTACGGGACTTTCCTACTTCACCAAACGTGGCTTGCCAGCCC",
+        "length": 2906,
+        "topology": "circular",
+        "strandedness": "double",
+        "dam_methylated": true,
+        "dcm_methylated": true,
+        "ecoki_methylated": true
+      }
+    ],
+    "11": [
+      {
+        "node_index": 1,
+        "sequence_type": 1,
+        "sequence": "agcGAGCTCtagctagctactgctagctagctagctaWwWagctagctagctgatcgatcgtatatattatatctattcgtagctagtCATATGcgtactac",
+        "length": 102,
+        "format_version": 2,
+        "strandedness_flag": 3,
+        "property_flags": 1281,
+        "header_seq_length": 37,
+        "node_info": {
+          "30": [
+            {
+              "17": [
+                {
+                  "AlignableSequences": {
+                    "trimStringency": "Medium"
+                  }
+                }
+              ],
+              "8": [
+                {
+                  "AdditionalSequenceProperties": {
+                    "UpstreamStickiness": "0",
+                    "DownstreamStickiness": "0",
+                    "UpstreamModification": "Unmodified",
+                    "DownstreamModification": "Unmodified"
+                  }
+                }
+              ],
+              "5": [
+                {
+                  "Primers": {
+                    "nextValidID": "0",
+                    "HybridizationParams": {
+                      "minContinuousMatchLen": "10",
+                      "allowMismatch": "1",
+                      "minMeltingTemperature": "40",
+                      "showAdditionalFivePrimeMatches": "1",
+                      "minimumFivePrimeAnnealing": "15"
+                    }
+                  }
+                }
+              ],
+              "6": [
+                {
+                  "Notes": {
+                    "UUID": "9d6656c4-236b-4698-bbe5-dacc561208a4",
+                    "Type": "Natural",
+                    "Created": {
+                      "UTC": "5:28:11",
+                      "_text": "2026.5.22"
+                    },
+                    "LastModified": {
+                      "UTC": "5:30:30",
+                      "_text": "2026.5.22"
+                    },
+                    "SequenceClass": "UNA",
+                    "TransformedInto": "unspecified"
+                  }
+                }
+              ],
+              "14": [
+                {
+                  "CustomEnzymeSets": {
+                    "CustomEnzymeSet": {
+                      "type": "2",
+                      "name": "None"
+                    }
+                  }
+                }
+              ],
+              "28": [
+                {
+                  "EnzymeVisibilities": {
+                    "vals": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "node_index": 0,
+        "sequence_type": 1,
+        "sequence": "TTACGGCCTCGTGATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCGGGGAAATGTGCGCGGAACCCCTATTTGTTTATTTTTCTAAATACATTCAAATATGTATCCGCTCATGAGACAATAACCCTGATAAATGCTTCAATAATATTGAAAAAGGAAGAGTATGCGCTCACGCAACTGGTCCAGAACCTTGACCGAACGCAGCGGTGGTAACGGCGCAGTGGCGGTTTTCATGGCTTGTTATGACTGTTTTTTTGGGGTACAGTCTATGCCTCGGGCATCCAAGCAGCAAGCGCGTTACGCCGTGGGTCGATGTTTGATGTTATGGAGCAGCAACGATGTTACGCAGCAGGGCAGTCGCCCTAAAACAAAGTTAAACATCATGAGGGAAGCGGTGATCGCCGAAGTATCGACTCAACTATCAGAGGTAGTTGGCGTCATCGAGCGCCATCTCGAACCGACGTTGCTGGCCGTACATTTGTACGGCTCCGCAGTGGATGGCGGCCTGAAGCCACACAGCGATATTGATTTGCTGGTTACGGTGACCGTAAGGCTTGATGAAACAACGCGGCGAGCTTTGATCAACGACCTTTTGGAAACTTCGGCTTCCCCTGGAGAGAGCGAGATTCTCCGCGCTGTAGAAGTCACCATTGTTGTGCACGACGACATCATTCCGTGGCGTTATCCAGCTAAGCGCGAACTGCAATTTGGAGAATGGCAGCGCAATGACATTCTTGCAGGTATCTTCGAGCCAGCCACGATCGACATTGATCTGGCTATCTTGCTGACAAAAGCAAGAGAACATAGCGTTGCCTTGGTAGGTCCAGCGGCGGAGGAACTCTTTGATCCGGTTCCTGAACAGGATCTATTTGAGGCGCTAAATGAAACCTTAACGCTATGGAACTCGCCGCCCGACTGGGCTGGCGATGAGCGAAATGTAGTGCTTACGTTGTCCCGCATTTGGTACAGCGCAGTAACCGGCAAAATCGCGCCGAAGGATGTCGCTGCCGACTGGGCAATGGAGCGCCTGCCGGCCCAGTATCAGCCCGTCATACTTGAAGCTAGACAGGCTTATCTTGGACAAGAAGAAGATCGCTTGGCCTCGCGCGCAGATCAGTTGGAAGAATTTGTCCATTACGTAAAAGGCGAGATCACCAAGGTAGTCGGCAAATAACTGTCAGACCAAGTTTACTCATATATACTTTAGATTGATTTAAAACTTCATTTTTAATTTAAAAGGATCTAGGTGAAGATCCTTTTTGATAATCTCATGACCAAAATCCCTTAACGTGAGTTTTCGTTCCACTGAGCGTCAGACCCCGTAGAAAAGATCAAAGGATCTTCTTGAGATCCTTTTTTTCTGCGCGTAATCTGCTGCTTGCAAACAAAAAAACCACCGCTACCAGCGGTGGTTTGTTTGCCGGATCAAGAGCTACCAACTCTTTTTCCGAAGGTAACTGGCTTCAGCAGAGCGCAGATACCAAATACTGTCCTTCTAGTGTAGCCGTAGTTAGGCCACCACTTCAAGAACTCTGTAGCACCGCCTACATACCTCGCTCTGCTAATCCTGTTACCAGTGGCTGCTGCCAGTGGCGATAAGTCGTGTCTTACCGGGTTGGACTCAAGACGATAGTTACCGGATAAGGCGCAGCGGTCGGGCTGAACGGGGGGTTCGTGCACACAGCCCAGCTTGGAGCGAACGACCTACACCGAACTGAGATACCTACAGCGTGAGCTATGAGAAAGCGCCACGCTTCCCGAAGGGAGAAAGGCGGACAGGTATCCGGTAAGCGGCAGGGTCGGAACAGGAGAGCGCACGAGGGAGCTTCCAGGGGGAAACGCCTGGTATCTTTATAGTCCTGTCGGGTTTCGCCACCTCTGACTTGAGCGTCGATTTTTGTGATGCTCGTCAGGGGGGCGGAGCCTATGGAAAAACGCCAGCAACGCGGCCTTTTTACGGTTCCTGGCCTTTTGCTGGCCTTTTGCTCACATGTTCTTTCCTGCGTTATCCCCTGATTCTGTGGATAACCGTATTACCGCCTTTGAGTGAGCTGATACCGCTCGCCGCAGCCGAACGACCGAGCGCAGCGAGTCAGTGAGCGAGGAAGCGGAAGAGCGCCCAATACGCAAACCGCCTCTCCCCGCGCGTTGGCCGATTCATTAACTACAGGAAACAGCTATGACTCGCAAATGGGCGGTAGGCGTGTATGCCATAGCATTTTTATCCGAATTCGGATCCCTGCAGAAGCTTCTCGAGTCTAGAGATATCCCCGGGAAAAGGTTTGTCTTCTGCCGCAGCTGGCACGACAGGTTTGCCGACTGGAAAGCGGGCAGTGAGCGCAACGCAATTAATGTGAGTTAGCTCACTCATTAGGCACCCCAGGCTTTACACTTTATGCTTCCGGCTCGTATGTTGTGTGGAATTGTGAGCGGATAACAATTTCACACAGGAAACAGCTATGACCATGATTACGCCAAGCTTGCATGCCTGCAGGTCGACTCTAGAGGATCCCCGGGTACCGAGCTCGAATTCACTGGCCGTCGTTTTACAACGCCGCGACTGGGAAAATCCTGGCGTTACCCAACTTAATCGCCTTGCAGCACATCCCCCTTTCGCCAGCTGGCGTAATAGCGAAGAGGCCCGCACCGATCGCCCTTCCCAACAGTTGCGCAGCCTGAATGGCGAATGGCGCCTGATGCGGTATTTTCTCCTTACGCATCTGTGCGGTATTTCACACCGCATATGGTGCACTCTCAGTACAATCTGCTCTGATGCCGCATAGTTAAGCCAGCCCCGACACCCGCCAACACCCGCTGACGCGCCCTGACGGGCTTGTCTGCTCCCGGCATCCGCTTACAGACAAGCTGTGACGCAAGAAGACAATTCGTTTGGATCCGAATTCAAGCTTCTGCAGTCTAGACTCGAGCCCGGGGATATCTACAACGTCGTGACTGGGAAAACTCCTTACGGGACTTTCCTACTTCACCAAACGTGGCTTGCCAGCCC",
+        "length": 3040,
+        "format_version": 31,
+        "strandedness_flag": 1,
+        "property_flags": 1537,
+        "header_seq_length": 3040,
+        "node_info": {
+          "30": [
+            {
+              "17": [
+                {
+                  "AlignableSequences": {
+                    "trimStringency": "Medium"
+                  }
+                }
+              ],
+              "8": [
+                {
+                  "AdditionalSequenceProperties": {
+                    "UpstreamStickiness": "0",
+                    "DownstreamStickiness": "0",
+                    "UpstreamModification": "FivePrimePhosphorylated",
+                    "DownstreamModification": "FivePrimePhosphorylated"
+                  }
+                }
+              ],
+              "10": [
+                {
+                  "features": [
+                    {
+                      "name": "Sm/Sp no DraIII",
+                      "type": "CDS",
+                      "strand": "+",
+                      "start": 196,
+                      "end": 1207,
+                      "color": "#ff9966",
+                      "segments": [
+                        {
+                          "range": "197-1207",
+                          "color": "#ff9966",
+                          "type": "standard",
+                          "translated": "1"
+                        }
+                      ],
+                      "qualifiers": {
+                        "codon_start": 1,
+                        "label": "Sm/Sp\\no\\DraIII",
+                        "note": "/vntifkey=4",
+                        "transl_table": 1
+                      },
+                      "extras": {
+                        "recentID": "0",
+                        "translationMW": "37522.77",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1",
+                        "hitsStopCodon": "1"
+                      },
+                      "raw_qualifiers": [
+                        {
+                          "name": "codon_start",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "label",
+                          "V": {
+                            "text": "Sm/Sp\\no\\DraIII"
+                          }
+                        },
+                        {
+                          "name": "note",
+                          "V": {
+                            "text": "/vntifkey=4"
+                          }
+                        },
+                        {
+                          "name": "transl_table",
+                          "V": {
+                            "int": "1"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "rep (pMB1)",
+                      "type": "misc_feature",
+                      "strand": "+",
+                      "start": 1366,
+                      "end": 1981,
+                      "color": "#66cc99",
+                      "segments": [
+                        {
+                          "range": "1367-1981",
+                          "color": "#66cc99",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {
+                        "label": "rep\\(pMB1)",
+                        "note": "/vntifkey=21"
+                      },
+                      "extras": {
+                        "recentID": "1",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": [
+                        {
+                          "name": "label",
+                          "V": {
+                            "text": "rep\\(pMB1)"
+                          }
+                        },
+                        {
+                          "name": "note",
+                          "V": {
+                            "text": "/vntifkey=21"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Universal Adapter D",
+                      "type": "misc_feature",
+                      "strand": ".",
+                      "start": 2311,
+                      "end": 2315,
+                      "color": "#a6acb3",
+                      "segments": [
+                        {
+                          "range": "2312-2315",
+                          "color": "#a6acb3",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "2",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    },
+                    {
+                      "name": "Lac Term",
+                      "type": "terminator",
+                      "strand": ".",
+                      "start": 2816,
+                      "end": 2905,
+                      "color": "#ffffff",
+                      "segments": [
+                        {
+                          "range": "2817-2905",
+                          "color": "#ffffff",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "3",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    },
+                    {
+                      "name": "Lac Promoter",
+                      "type": "promoter",
+                      "strand": ".",
+                      "start": 2327,
+                      "end": 2492,
+                      "color": "#ffffff",
+                      "segments": [
+                        {
+                          "range": "2328-2492",
+                          "color": "#ffffff",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "4",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    },
+                    {
+                      "name": "LacZ",
+                      "type": "CDS",
+                      "strand": "+",
+                      "start": 2492,
+                      "end": 2813,
+                      "color": "#00ffff",
+                      "segments": [
+                        {
+                          "range": "2493-2813",
+                          "color": "#00ffff",
+                          "type": "standard",
+                          "translated": "1"
+                        }
+                      ],
+                      "qualifiers": {
+                        "codon_start": 1,
+                        "transl_table": 1
+                      },
+                      "extras": {
+                        "recentID": "5",
+                        "translationMW": "12231.98",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1",
+                        "maxRunOn": "2816",
+                        "maxFusedRunOn": "2816"
+                      },
+                      "raw_qualifiers": [
+                        {
+                          "name": "codon_start",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "transl_table",
+                          "V": {
+                            "int": "1"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Universal Adapter D",
+                      "type": "misc_feature",
+                      "strand": ".",
+                      "start": 2917,
+                      "end": 2921,
+                      "color": "#a6acb3",
+                      "segments": [
+                        {
+                          "range": "2918-2921",
+                          "color": "#a6acb3",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "6",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    }
+                  ],
+                  "wrapper_extras": {
+                    "nextValidID": "7"
+                  }
+                }
+              ],
+              "5": [
+                {
+                  "Primers": {
+                    "nextValidID": "6",
+                    "HybridizationParams": {
+                      "minContinuousMatchLen": "10",
+                      "allowMismatch": "1",
+                      "minMeltingTemperature": "40",
+                      "showAdditionalFivePrimeMatches": "1",
+                      "minimumFivePrimeAnnealing": "15"
+                    },
+                    "Primer": [
+                      {
+                        "recentID": "0",
+                        "name": "M13-R",
+                        "sequence": "CAGGAAACAGCTATGAC",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T20:52:36Z",
+                        "BindingSite": [
+                          {
+                            "location": "2200-2216",
+                            "boundStrand": "0",
+                            "annealedBases": "CAGGAAACAGCTATGAC",
+                            "meltingTemperature": "49",
+                            "Component": {
+                              "hybridizedRange": "2200-2216",
+                              "bases": "CAGGAAACAGCTATGAC"
+                            }
+                          },
+                          {
+                            "location": "2480-2496",
+                            "boundStrand": "0",
+                            "annealedBases": "CAGGAAACAGCTATGAC",
+                            "meltingTemperature": "49",
+                            "Component": {
+                              "hybridizedRange": "2480-2496",
+                              "bases": "CAGGAAACAGCTATGAC"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2200-2216",
+                            "boundStrand": "0",
+                            "annealedBases": "CAGGAAACAGCTATGAC",
+                            "meltingTemperature": "49",
+                            "Component": {
+                              "hybridizedRange": "2200-2216",
+                              "bases": "CAGGAAACAGCTATGAC"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2480-2496",
+                            "boundStrand": "0",
+                            "annealedBases": "CAGGAAACAGCTATGAC",
+                            "meltingTemperature": "49",
+                            "Component": {
+                              "hybridizedRange": "2480-2496",
+                              "bases": "CAGGAAACAGCTATGAC"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "recentID": "1",
+                        "name": "CMV-F",
+                        "sequence": "CGCAAATGGGCGGTAGGCGTG",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T20:36:33Z",
+                        "BindingSite": [
+                          {
+                            "location": "2218-2238",
+                            "boundStrand": "0",
+                            "annealedBases": "CGCAAATGGGCGGTAGGCGTG",
+                            "meltingTemperature": "67",
+                            "Component": {
+                              "hybridizedRange": "2218-2238",
+                              "bases": "CGCAAATGGGCGGTAGGCGTG"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2218-2238",
+                            "boundStrand": "0",
+                            "annealedBases": "CGCAAATGGGCGGTAGGCGTG",
+                            "meltingTemperature": "67",
+                            "Component": {
+                              "hybridizedRange": "2218-2238",
+                              "bases": "CGCAAATGGGCGGTAGGCGTG"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "recentID": "2",
+                        "name": "pBAD-F",
+                        "sequence": "ATGCCATAGCATTTTTATCC",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T20:46:55Z",
+                        "BindingSite": [
+                          {
+                            "location": "2240-2259",
+                            "boundStrand": "0",
+                            "annealedBases": "ATGCCATAGCATTTTTATCC",
+                            "meltingTemperature": "50",
+                            "Component": {
+                              "hybridizedRange": "2240-2259",
+                              "bases": "ATGCCATAGCATTTTTATCC"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2240-2259",
+                            "boundStrand": "0",
+                            "annealedBases": "ATGCCATAGCATTTTTATCC",
+                            "meltingTemperature": "50",
+                            "Component": {
+                              "hybridizedRange": "2240-2259",
+                              "bases": "ATGCCATAGCATTTTTATCC"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "recentID": "3",
+                        "name": "M13F",
+                        "sequence": "GTTTTCCCAGTCACGACGTTGTA",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T18:47:25Z",
+                        "BindingSite": [
+                          {
+                            "location": "2972-2994",
+                            "boundStrand": "1",
+                            "annealedBases": "GTTTTCCCAGTCACGACGTTGTA",
+                            "meltingTemperature": "58",
+                            "Component": {
+                              "hybridizedRange": "2972-2994",
+                              "bases": "GTTTTCCCAGTCACGACGTTGTA"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2972-2994",
+                            "boundStrand": "1",
+                            "annealedBases": "GTTTTCCCAGTCACGACGTTGTA",
+                            "meltingTemperature": "58",
+                            "Component": {
+                              "hybridizedRange": "2972-2994",
+                              "bases": "GTTTTCCCAGTCACGACGTTGTA"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "recentID": "4",
+                        "name": "pGEX5",
+                        "sequence": "GGGCTGGCAAGCCACGTTTGGTG",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T20:28:27Z",
+                        "BindingSite": [
+                          {
+                            "location": "3017-3039",
+                            "boundStrand": "1",
+                            "annealedBases": "GGGCTGGCAAGCCACGTTTGGTG",
+                            "meltingTemperature": "67",
+                            "Component": {
+                              "hybridizedRange": "3017-3039",
+                              "bases": "GGGCTGGCAAGCCACGTTTGGTG"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "3017-3039",
+                            "boundStrand": "1",
+                            "annealedBases": "GGGCTGGCAAGCCACGTTTGGTG",
+                            "meltingTemperature": "67",
+                            "Component": {
+                              "hybridizedRange": "3017-3039",
+                              "bases": "GGGCTGGCAAGCCACGTTTGGTG"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "recentID": "5",
+                        "name": "CMV-R",
+                        "sequence": "AGTAGGAAAGTCCCGTAAGG",
+                        "description": "<html><body></body></html>",
+                        "dateAdded": "2021-05-28T20:51:06Z",
+                        "BindingSite": [
+                          {
+                            "location": "2996-3015",
+                            "boundStrand": "1",
+                            "annealedBases": "AGTAGGAAAGTCCCGTAAGG",
+                            "meltingTemperature": "55",
+                            "Component": {
+                              "hybridizedRange": "2996-3015",
+                              "bases": "AGTAGGAAAGTCCCGTAAGG"
+                            }
+                          },
+                          {
+                            "simplified": "1",
+                            "location": "2996-3015",
+                            "boundStrand": "1",
+                            "annealedBases": "AGTAGGAAAGTCCCGTAAGG",
+                            "meltingTemperature": "55",
+                            "Component": {
+                              "hybridizedRange": "2996-3015",
+                              "bases": "AGTAGGAAAGTCCCGTAAGG"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "6": [
+                {
+                  "Notes": {
+                    "UUID": "f4e494f4-a20c-4add-abe2-2b449b91887e",
+                    "Type": "Synthetic",
+                    "ConfirmedExperimentally": "0",
+                    "Created": {
+                      "UTC": "20:20:37",
+                      "_text": "2021.10.13"
+                    },
+                    "LastModified": {
+                      "UTC": "5:30:25",
+                      "_text": "2026.5.22"
+                    },
+                    "CreatedBy": "Cory",
+                    "SequenceClass": "UNA",
+                    "TransformedInto": "unspecified"
+                  }
+                }
+              ],
+              "14": [
+                {
+                  "CustomEnzymeSets": {
+                    "CustomEnzymeSet": {
+                      "type": "2",
+                      "name": "None"
+                    }
+                  }
+                }
+              ],
+              "28": [
+                {
+                  "EnzymeVisibilities": {
+                    "vals": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "7": [
+      {
+        "HistoryTree": {
+          "Node": {
+            "name": "Cloned.dna",
+            "type": "DNA",
+            "seqLen": "2906",
+            "strandedness": "double",
+            "ID": "2",
+            "circular": "1",
+            "operation": "insertFragment",
+            "RegeneratedSite": [
+              {
+                "name": "SacI",
+                "pos": "2559",
+                "siteCount": "1"
+              },
+              {
+                "name": "NdeI",
+                "pos": "2641",
+                "siteCount": "1"
+              }
+            ],
+            "HistoryColors": {
+              "StrandColors": {
+                "type": "Product",
+                "TopStrand": {
+                  "ColorRange": {
+                    "range": "2559..2640",
+                    "colors": "red"
+                  }
+                },
+                "BottomStrand": {
+                  "ColorRange": {
+                    "range": "2555..2642",
+                    "colors": "red"
+                  }
+                }
+              }
+            },
+            "InputSummary": [
+              {
+                "manipulation": "replace",
+                "name1": "NdeI",
+                "name2": "SacI",
+                "val1": "2775",
+                "val2": "2559",
+                "siteCount1": "1",
+                "siteCount2": "1"
+              },
+              {
+                "manipulation": "insert",
+                "name1": "SacI",
+                "name2": "NdeI",
+                "val1": "8",
+                "val2": "90",
+                "siteCount1": "1",
+                "siteCount2": "1"
+              }
+            ],
+            "Node": [
+              {
+                "name": "K.dna",
+                "type": "DNA",
+                "seqLen": "3040",
+                "strandedness": "double",
+                "ID": "0",
+                "circular": "1",
+                "resurrectable": "1",
+                "operation": "invalid",
+                "Features": {
+                  "Feature": [
+                    {
+                      "name": "Sm/Sp no DraIII",
+                      "directionality": "1",
+                      "translationMW": "37522.77",
+                      "type": "CDS",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "197-1207",
+                        "color": "#ff9966",
+                        "type": "standard"
+                      },
+                      "Q": [
+                        {
+                          "name": "codon_start",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "label",
+                          "V": {
+                            "text": "Sm/Sp\\no\\DraIII"
+                          }
+                        },
+                        {
+                          "name": "note",
+                          "V": {
+                            "text": "/vntifkey=4"
+                          }
+                        },
+                        {
+                          "name": "transl_table",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "translation",
+                          "V": {
+                            "text": "MRSRNWSRTLTERSGGNGAVAVFMACYDCFFGVQSMPRASKQQARYAVGRCLMLWSSNDVTQQGSRPKTKLNIMREAVIAEVSTQLSEVVGVIERHLEPTLLAVHLYGSAVDGGLKPHSDIDLLVTVTVRLDETTRRALINDLLETSASPGESEILRAVEVTIVVHDDIIPWRYPAKRELQFGEWQRNDILAGIFEPATIDIDLAILLTKAREHSVALVGPAAEELFDPVPEQDLFEALNETLTLWNSPPDWAGDERNVVLTLSRIWYSAVTGKIAPKDVAADWAMERLPAQYQPVILEARQAYLGQEEDRLASRADQLEEFVHYVKGEITKVVGK*"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "rep (pMB1)",
+                      "directionality": "1",
+                      "type": "misc_feature",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "1367-1981",
+                        "color": "#66cc99",
+                        "type": "standard"
+                      },
+                      "Q": [
+                        {
+                          "name": "label",
+                          "V": {
+                            "text": "rep\\(pMB1)"
+                          }
+                        },
+                        {
+                          "name": "note",
+                          "V": {
+                            "text": "/vntifkey=21"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "LacZ",
+                      "directionality": "1",
+                      "translationMW": "12231.98",
+                      "type": "CDS",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "2493-2813",
+                        "color": "#00ffff",
+                        "type": "standard"
+                      },
+                      "Q": [
+                        {
+                          "name": "codon_start",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "transl_table",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "translation",
+                          "V": {
+                            "text": "MTMITPSLHACRSTLEDPRVPSSNSLAVVLQRRDWENPGVTQLNRLAAHPPFASWRNSEEARTDRPSQQLRSLNGEWRLMRYFLLTHLCGISHRIWCTLSTICSDAA"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Lac Promoter",
+                      "type": "promoter",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "2328-2492",
+                        "color": "#ffffff",
+                        "type": "standard"
+                      }
+                    },
+                    {
+                      "name": "Lac Term",
+                      "type": "terminator",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "2817-2905",
+                        "color": "#ffffff",
+                        "type": "standard"
+                      }
+                    },
+                    {
+                      "name": "Universal Adapter D",
+                      "type": "misc_feature",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "2312-2315",
+                        "color": "#a6acb3",
+                        "type": "standard"
+                      }
+                    },
+                    {
+                      "name": "Universal Adapter D",
+                      "type": "misc_feature",
+                      "allowSegmentOverlaps": "0",
+                      "Segment": {
+                        "range": "2918-2921",
+                        "color": "#a6acb3",
+                        "type": "standard"
+                      }
+                    }
+                  ]
+                },
+                "HistoryColors": {
+                  "StrandColors": {
+                    "type": "Input",
+                    "TopStrand": {
+                      "ColorRange": {
+                        "range": "2559..2774",
+                        "colors": "white"
+                      }
+                    },
+                    "BottomStrand": {
+                      "ColorRange": {
+                        "range": "2555..2776",
+                        "colors": "white"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "name": "J.dna",
+                "type": "DNA",
+                "seqLen": "102",
+                "strandedness": "double",
+                "ID": "1",
+                "circular": "0",
+                "upstreamModification": "Unmodified",
+                "downstreamModification": "Unmodified",
+                "resurrectable": "1",
+                "operation": "invalid",
+                "HistoryColors": {
+                  "StrandColors": {
+                    "type": "Input",
+                    "TopStrand": {
+                      "ColorRange": [
+                        {
+                          "range": "8..89",
+                          "colors": "red"
+                        },
+                        {
+                          "range": "0..7",
+                          "colors": "white"
+                        },
+                        {
+                          "range": "90..101",
+                          "colors": "white"
+                        }
+                      ]
+                    },
+                    "BottomStrand": {
+                      "ColorRange": [
+                        {
+                          "range": "4..91",
+                          "colors": "red"
+                        },
+                        {
+                          "range": "0..3",
+                          "colors": "white"
+                        },
+                        {
+                          "range": "92..101",
+                          "colors": "white"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "17": [
+      {
+        "AlignableSequences": {
+          "trimStringency": "Medium"
+        }
+      }
+    ],
+    "8": [
+      {
+        "AdditionalSequenceProperties": {
+          "UpstreamStickiness": "0",
+          "DownstreamStickiness": "0",
+          "UpstreamModification": "FivePrimePhosphorylated",
+          "DownstreamModification": "FivePrimePhosphorylated"
+        }
+      }
+    ],
+    "10": [
+      {
+        "features": [
+          {
+            "name": "Universal Adapter D",
+            "type": "misc_feature",
+            "strand": ".",
+            "start": 2783,
+            "end": 2787,
+            "color": "#a6acb3",
+            "segments": [
+              {
+                "range": "2784-2787",
+                "color": "#a6acb3",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "0",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "LacZ",
+            "type": "CDS",
+            "strand": "+",
+            "start": 2641,
+            "end": 2679,
+            "color": "#00ffff",
+            "segments": [
+              {
+                "range": "2642-2679",
+                "color": "#00ffff",
+                "type": "standard",
+                "translated": "1"
+              }
+            ],
+            "qualifiers": {
+              "codon_start": 1,
+              "transl_table": 1,
+              "translation": "WCTLSTICSDAA"
+            },
+            "extras": {
+              "recentID": "1",
+              "translationMW": "1270.45",
+              "allowSegmentOverlaps": "0",
+              "readingFrame": "3",
+              "consecutiveTranslationNumbering": "1",
+              "consecutiveNumberingStartsFrom": "96",
+              "maxRunOn": "2682",
+              "maxFusedRunOn": "2682"
+            },
+            "raw_qualifiers": [
+              {
+                "name": "codon_start",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "transl_table",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "translation",
+                "V": {
+                  "text": "WCTLSTICSDAA"
+                }
+              }
+            ]
+          },
+          {
+            "name": "LacZ",
+            "type": "CDS",
+            "strand": "+",
+            "start": 2492,
+            "end": 2559,
+            "color": "#00ffff",
+            "segments": [
+              {
+                "range": "2493-2559",
+                "color": "#00ffff",
+                "type": "standard",
+                "translated": "1"
+              }
+            ],
+            "qualifiers": {
+              "codon_start": 1,
+              "transl_table": 1,
+              "translation": "MTMITPSLHACRSTLEDPRVPS"
+            },
+            "extras": {
+              "recentID": "2",
+              "translationMW": "2442.87",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1",
+              "maxRunOn": "2567",
+              "maxFusedRunOn": "2567"
+            },
+            "raw_qualifiers": [
+              {
+                "name": "codon_start",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "transl_table",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "translation",
+                "V": {
+                  "text": "MTMITPSLHACRSTLEDPRVPS"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Lac Promoter",
+            "type": "promoter",
+            "strand": ".",
+            "start": 2327,
+            "end": 2492,
+            "color": "#ffffff",
+            "segments": [
+              {
+                "range": "2328-2492",
+                "color": "#ffffff",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "3",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "Lac Term",
+            "type": "terminator",
+            "strand": ".",
+            "start": 2682,
+            "end": 2771,
+            "color": "#ffffff",
+            "segments": [
+              {
+                "range": "2683-2771",
+                "color": "#ffffff",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "4",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "Universal Adapter D",
+            "type": "misc_feature",
+            "strand": ".",
+            "start": 2311,
+            "end": 2315,
+            "color": "#a6acb3",
+            "segments": [
+              {
+                "range": "2312-2315",
+                "color": "#a6acb3",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "5",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "rep (pMB1)",
+            "type": "misc_feature",
+            "strand": "+",
+            "start": 1366,
+            "end": 1981,
+            "color": "#66cc99",
+            "segments": [
+              {
+                "range": "1367-1981",
+                "color": "#66cc99",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {
+              "label": "rep\\(pMB1)",
+              "note": "/vntifkey=21"
+            },
+            "extras": {
+              "recentID": "6",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": [
+              {
+                "name": "label",
+                "V": {
+                  "text": "rep\\(pMB1)"
+                }
+              },
+              {
+                "name": "note",
+                "V": {
+                  "text": "/vntifkey=21"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Sm/Sp no DraIII",
+            "type": "CDS",
+            "strand": "+",
+            "start": 196,
+            "end": 1207,
+            "color": "#ff9966",
+            "segments": [
+              {
+                "range": "197-1207",
+                "color": "#ff9966",
+                "type": "standard",
+                "translated": "1"
+              }
+            ],
+            "qualifiers": {
+              "codon_start": 1,
+              "label": "Sm/Sp\\no\\DraIII",
+              "note": "/vntifkey=4",
+              "transl_table": 1,
+              "translation": "MRSRNWSRTLTERSGGNGAVAVFMACYDCFFGVQSMPRASKQQARYAVGRCLMLWSSNDVTQQGSRPKTKLNIMREAVIAEVSTQLSEVVGVIERHLEPTLLAVHLYGSAVDGGLKPHSDIDLLVTVTVRLDETTRRALINDLLETSASPGESEILRAVEVTIVVHDDIIPWRYPAKRELQFGEWQRNDILAGIFEPATIDIDLAILLTKAREHSVALVGPAAEELFDPVPEQDLFEALNETLTLWNSPPDWAGDERNVVLTLSRIWYSAVTGKIAPKDVAADWAMERLPAQYQPVILEARQAYLGQEEDRLASRADQLEEFVHYVKGEITKVVGK*"
+            },
+            "extras": {
+              "recentID": "7",
+              "translationMW": "37522.77",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1",
+              "hitsStopCodon": "1"
+            },
+            "raw_qualifiers": [
+              {
+                "name": "codon_start",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "label",
+                "V": {
+                  "text": "Sm/Sp\\no\\DraIII"
+                }
+              },
+              {
+                "name": "note",
+                "V": {
+                  "text": "/vntifkey=4"
+                }
+              },
+              {
+                "name": "transl_table",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "translation",
+                "V": {
+                  "text": "MRSRNWSRTLTERSGGNGAVAVFMACYDCFFGVQSMPRASKQQARYAVGRCLMLWSSNDVTQQGSRPKTKLNIMREAVIAEVSTQLSEVVGVIERHLEPTLLAVHLYGSAVDGGLKPHSDIDLLVTVTVRLDETTRRALINDLLETSASPGESEILRAVEVTIVVHDDIIPWRYPAKRELQFGEWQRNDILAGIFEPATIDIDLAILLTKAREHSVALVGPAAEELFDPVPEQDLFEALNETLTLWNSPPDWAGDERNVVLTLSRIWYSAVTGKIAPKDVAADWAMERLPAQYQPVILEARQAYLGQEEDRLASRADQLEEFVHYVKGEITKVVGK*"
+                }
+              }
+            ]
+          }
+        ],
+        "wrapper_extras": {
+          "nextValidID": "8"
+        }
+      }
+    ],
+    "5": [
+      {
+        "Primers": {
+          "nextValidID": "6",
+          "HybridizationParams": {
+            "minContinuousMatchLen": "10",
+            "allowMismatch": "1",
+            "minMeltingTemperature": "40",
+            "showAdditionalFivePrimeMatches": "1",
+            "minimumFivePrimeAnnealing": "15"
+          },
+          "Primer": [
+            {
+              "recentID": "0",
+              "name": "M13-R",
+              "sequence": "CAGGAAACAGCTATGAC",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T20:52:36Z",
+              "BindingSite": [
+                {
+                  "location": "2200-2216",
+                  "boundStrand": "0",
+                  "annealedBases": "CAGGAAACAGCTATGAC",
+                  "meltingTemperature": "49",
+                  "Component": {
+                    "hybridizedRange": "2200-2216",
+                    "bases": "CAGGAAACAGCTATGAC"
+                  }
+                },
+                {
+                  "location": "2480-2496",
+                  "boundStrand": "0",
+                  "annealedBases": "CAGGAAACAGCTATGAC",
+                  "meltingTemperature": "49",
+                  "Component": {
+                    "hybridizedRange": "2480-2496",
+                    "bases": "CAGGAAACAGCTATGAC"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2200-2216",
+                  "boundStrand": "0",
+                  "annealedBases": "CAGGAAACAGCTATGAC",
+                  "meltingTemperature": "49",
+                  "Component": {
+                    "hybridizedRange": "2200-2216",
+                    "bases": "CAGGAAACAGCTATGAC"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2480-2496",
+                  "boundStrand": "0",
+                  "annealedBases": "CAGGAAACAGCTATGAC",
+                  "meltingTemperature": "49",
+                  "Component": {
+                    "hybridizedRange": "2480-2496",
+                    "bases": "CAGGAAACAGCTATGAC"
+                  }
+                }
+              ]
+            },
+            {
+              "recentID": "1",
+              "name": "CMV-F",
+              "sequence": "CGCAAATGGGCGGTAGGCGTG",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T20:36:33Z",
+              "BindingSite": [
+                {
+                  "location": "2218-2238",
+                  "boundStrand": "0",
+                  "annealedBases": "CGCAAATGGGCGGTAGGCGTG",
+                  "meltingTemperature": "67",
+                  "Component": {
+                    "hybridizedRange": "2218-2238",
+                    "bases": "CGCAAATGGGCGGTAGGCGTG"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2218-2238",
+                  "boundStrand": "0",
+                  "annealedBases": "CGCAAATGGGCGGTAGGCGTG",
+                  "meltingTemperature": "67",
+                  "Component": {
+                    "hybridizedRange": "2218-2238",
+                    "bases": "CGCAAATGGGCGGTAGGCGTG"
+                  }
+                }
+              ]
+            },
+            {
+              "recentID": "2",
+              "name": "pBAD-F",
+              "sequence": "ATGCCATAGCATTTTTATCC",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T20:46:55Z",
+              "BindingSite": [
+                {
+                  "location": "2240-2259",
+                  "boundStrand": "0",
+                  "annealedBases": "ATGCCATAGCATTTTTATCC",
+                  "meltingTemperature": "50",
+                  "Component": {
+                    "hybridizedRange": "2240-2259",
+                    "bases": "ATGCCATAGCATTTTTATCC"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2240-2259",
+                  "boundStrand": "0",
+                  "annealedBases": "ATGCCATAGCATTTTTATCC",
+                  "meltingTemperature": "50",
+                  "Component": {
+                    "hybridizedRange": "2240-2259",
+                    "bases": "ATGCCATAGCATTTTTATCC"
+                  }
+                }
+              ]
+            },
+            {
+              "recentID": "3",
+              "name": "M13F",
+              "sequence": "GTTTTCCCAGTCACGACGTTGTA",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T18:47:25Z",
+              "BindingSite": [
+                {
+                  "location": "2838-2860",
+                  "boundStrand": "1",
+                  "annealedBases": "GTTTTCCCAGTCACGACGTTGTA",
+                  "meltingTemperature": "58",
+                  "Component": {
+                    "hybridizedRange": "2838-2860",
+                    "bases": "GTTTTCCCAGTCACGACGTTGTA"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2838-2860",
+                  "boundStrand": "1",
+                  "annealedBases": "GTTTTCCCAGTCACGACGTTGTA",
+                  "meltingTemperature": "58",
+                  "Component": {
+                    "hybridizedRange": "2838-2860",
+                    "bases": "GTTTTCCCAGTCACGACGTTGTA"
+                  }
+                }
+              ]
+            },
+            {
+              "recentID": "4",
+              "name": "pGEX5",
+              "sequence": "GGGCTGGCAAGCCACGTTTGGTG",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T20:28:27Z",
+              "BindingSite": [
+                {
+                  "location": "2883-2905",
+                  "boundStrand": "1",
+                  "annealedBases": "GGGCTGGCAAGCCACGTTTGGTG",
+                  "meltingTemperature": "67",
+                  "Component": {
+                    "hybridizedRange": "2883-2905",
+                    "bases": "GGGCTGGCAAGCCACGTTTGGTG"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2883-2905",
+                  "boundStrand": "1",
+                  "annealedBases": "GGGCTGGCAAGCCACGTTTGGTG",
+                  "meltingTemperature": "67",
+                  "Component": {
+                    "hybridizedRange": "2883-2905",
+                    "bases": "GGGCTGGCAAGCCACGTTTGGTG"
+                  }
+                }
+              ]
+            },
+            {
+              "recentID": "5",
+              "name": "CMV-R",
+              "sequence": "AGTAGGAAAGTCCCGTAAGG",
+              "description": "<html><body></body></html>",
+              "dateAdded": "2021-05-28T20:51:06Z",
+              "BindingSite": [
+                {
+                  "location": "2862-2881",
+                  "boundStrand": "1",
+                  "annealedBases": "AGTAGGAAAGTCCCGTAAGG",
+                  "meltingTemperature": "55",
+                  "Component": {
+                    "hybridizedRange": "2862-2881",
+                    "bases": "AGTAGGAAAGTCCCGTAAGG"
+                  }
+                },
+                {
+                  "simplified": "1",
+                  "location": "2862-2881",
+                  "boundStrand": "1",
+                  "annealedBases": "AGTAGGAAAGTCCCGTAAGG",
+                  "meltingTemperature": "55",
+                  "Component": {
+                    "hybridizedRange": "2862-2881",
+                    "bases": "AGTAGGAAAGTCCCGTAAGG"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "6": [
+      {
+        "Notes": {
+          "UUID": "b9f181e7-7549-4f34-925c-a1a74c9e5b0e",
+          "Type": "Synthetic",
+          "ConfirmedExperimentally": "0",
+          "Created": {
+            "UTC": "5:30:55",
+            "_text": "2026.5.22"
+          },
+          "LastModified": {
+            "UTC": "5:30:55",
+            "_text": "2026.5.22"
+          },
+          "SequenceClass": "UNA",
+          "TransformedInto": "unspecified"
+        }
+      }
+    ],
+    "14": [
+      {
+        "CustomEnzymeSets": null
+      }
+    ],
+    "28": [
+      {
+        "EnzymeVisibilities": {
+          "vals": ""
+        }
+      }
+    ]
+  }
+}

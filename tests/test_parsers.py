@@ -263,6 +263,29 @@ class TestParseCompressedDna:
         assert result["length"] == 16
         assert result["format_version"] == 2
 
+    def test_parse_compressed_dna_format31_explicit_leading_chunk(self):
+        """Format version 31 prepends an implicit NNNN prefix before chunks."""
+        header = bytearray(14)
+        header[0] = 31
+
+        payload = bytes.fromhex(
+            "0100000007"
+            "721c"
+            "0000000400000006"
+        )
+        data = (
+            struct.pack(">I", 4 + 14 + len(payload))
+            + struct.pack(">I", 11)
+            + bytes(header)
+            + payload
+        )
+
+        result = parse_compressed_dna(data)
+
+        assert result["sequence"] == "NNNNacgTACG"
+        assert result["length"] == 11
+        assert result["format_version"] == 31
+
 
 # =============================================================================
 # XML Parser Tests

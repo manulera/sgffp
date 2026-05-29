@@ -1,0 +1,532 @@
+{
+  "cookie": {
+    "type_of_sequence": 1,
+    "export_version": 15,
+    "import_version": 20
+  },
+  "blocks": {
+    "0": [
+      {
+        "sequence": "GAAGACAACCATGGTCTCTCCATGGCGACTCCACAGAGTGTTTTTATTTTCGCwATATGCATATTGATGATAACTGAGTTGATACTGGCTAGCAAATCCTACTACGATATACTCGGCGTTCCAAAATCTGCTTCTGAGAGACAAGTCAAGAAGGCTTTTCATAAGTTGGCGATGAAATATCATCCTGACAAGAACAAATCACCAGATGCTGAAGCAAAGTTCAGGGAGATCGCAGAAGCATACGAAACGCTTAGCGATGCCAACAGACGAAAGGAATACGATACCCTTGGTCATAACGCATTTACCAATGGAAAGGGGCAGCGAGCCTCAGGATCACCATTCGAGCATAGTTTCAACTTTAATTTTGATGATTTGTTTAAGGACTTTGACTTTTTCGGTCAGAACCAGAACACTCGTTCCAAGAAACATTTCGAGAACCACTTTCAGACACGCCAAGACGGCAGCAGCCGTCAAAGACACCATTTCCAGGAATTCAGTTTCGGAGGAGGACTCTTTGACGACATGTTTGAAGATATGGAGAAAATGTTCTCTTTCTCsGGGTTCGACACCACCAACAATGGTCACACTGTTCAAACCGAGAACAGATTCCATGGGAGCTCCAAACATTGTAGAACCGTGACCCAAAGACGAGGGAATATGGTCACCACTTATACCGATTGCTCAGGACAATAAGCTTAGAGACCAATGTGGTCTTC",
+        "length": 716,
+        "topology": "circular",
+        "strandedness": "double",
+        "dam_methylated": true,
+        "dcm_methylated": true,
+        "ecoki_methylated": true
+      }
+    ],
+    "11": [
+      {
+        "node_index": 2,
+        "sequence_type": 29,
+        "modifier": {
+          "Manipulation": {
+            "AdditionalSequenceProperties": {
+              "UpstreamStickiness": "0",
+              "DownstreamStickiness": "0",
+              "UpstreamModification": "Unmodified",
+              "DownstreamModification": "Unmodified"
+            },
+            "Redo": {
+              "Action": [
+                {
+                  "type": "PROPERTIES",
+                  "properties": "3"
+                },
+                {
+                  "type": "ADDITIONAL_PROPERTIES",
+                  "AdditionalSequenceProperties": {
+                    "UpstreamStickiness": "0",
+                    "DownstreamStickiness": "0",
+                    "UpstreamModification": "FivePrimePhosphorylated",
+                    "DownstreamModification": "FivePrimePhosphorylated"
+                  }
+                }
+              ]
+            },
+            "Undo": {
+              "Action": {
+                "type": "PROPERTIES",
+                "properties": "2"
+              }
+            }
+          }
+        },
+        "node_info": {
+          "30": [
+            {
+              "17": [
+                {
+                  "AlignableSequences": {
+                    "trimStringency": "Medium"
+                  }
+                }
+              ],
+              "8": [
+                {
+                  "AdditionalSequenceProperties": {
+                    "UpstreamStickiness": "0",
+                    "DownstreamStickiness": "0",
+                    "UpstreamModification": "Unmodified",
+                    "DownstreamModification": "Unmodified"
+                  }
+                }
+              ],
+              "10": [
+                {
+                  "features": [
+                    {
+                      "name": "C Left",
+                      "type": "misc_feature",
+                      "strand": ".",
+                      "start": 0,
+                      "end": 12,
+                      "color": "#a6acb3",
+                      "segments": [
+                        {
+                          "range": "1-12",
+                          "color": "#a6acb3",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "0",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    },
+                    {
+                      "name": "C Right",
+                      "type": "misc_feature",
+                      "strand": ".",
+                      "start": 704,
+                      "end": 716,
+                      "color": "#a6acb3",
+                      "segments": [
+                        {
+                          "range": "705-716",
+                          "color": "#a6acb3",
+                          "type": "standard"
+                        }
+                      ],
+                      "qualifiers": {},
+                      "extras": {
+                        "recentID": "1",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1"
+                      },
+                      "raw_qualifiers": null
+                    },
+                    {
+                      "name": "BtDNAJB9",
+                      "type": "CDS",
+                      "strand": "+",
+                      "start": 21,
+                      "end": 690,
+                      "color": "#00ccff",
+                      "segments": [
+                        {
+                          "range": "22-690",
+                          "color": "#00ccff",
+                          "type": "standard",
+                          "translated": "1"
+                        }
+                      ],
+                      "qualifiers": {
+                        "codon_start": 1,
+                        "transl_table": 1
+                      },
+                      "extras": {
+                        "recentID": "2",
+                        "translationMW": "25715.56",
+                        "allowSegmentOverlaps": "0",
+                        "consecutiveTranslationNumbering": "1",
+                        "maxRunOn": "693",
+                        "maxFusedRunOn": "693"
+                      },
+                      "raw_qualifiers": [
+                        {
+                          "name": "codon_start",
+                          "V": {
+                            "int": "1"
+                          }
+                        },
+                        {
+                          "name": "transl_table",
+                          "V": {
+                            "int": "1"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "wrapper_extras": {
+                    "nextValidID": "3"
+                  }
+                }
+              ],
+              "5": [
+                {
+                  "Primers": {
+                    "nextValidID": "0",
+                    "HybridizationParams": {
+                      "minContinuousMatchLen": "10",
+                      "allowMismatch": "1",
+                      "minMeltingTemperature": "40",
+                      "showAdditionalFivePrimeMatches": "1",
+                      "minimumFivePrimeAnnealing": "15"
+                    }
+                  }
+                }
+              ],
+              "6": [
+                {
+                  "Notes": {
+                    "UUID": "e01194f9-50ec-4f5a-af52-8c26d952cec8",
+                    "Type": "Natural",
+                    "Created": {
+                      "UTC": "23:57:10",
+                      "_text": "2024.10.11"
+                    },
+                    "LastModified": {
+                      "UTC": "5:11:10",
+                      "_text": "2026.5.22"
+                    },
+                    "CreatedBy": "SnapGene License",
+                    "SequenceClass": "UNA",
+                    "TransformedInto": "unspecified"
+                  }
+                }
+              ],
+              "14": [
+                {
+                  "CustomEnzymeSets": {
+                    "CustomEnzymeSet": {
+                      "type": "2",
+                      "name": "None"
+                    }
+                  }
+                }
+              ],
+              "28": [
+                {
+                  "EnzymeVisibilities": {
+                    "vals": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "7": [
+      {
+        "HistoryTree": {
+          "Node": {
+            "name": "linear.dna",
+            "type": "DNA",
+            "seqLen": "716",
+            "strandedness": "double",
+            "ID": "3",
+            "circular": "1",
+            "operation": "changeTopology",
+            "HistoryColors": {
+              "StrandColors": {
+                "type": "Product",
+                "TopStrand": {
+                  "ColorRange": [
+                    {
+                      "range": "0..178",
+                      "colors": "blue-black"
+                    },
+                    {
+                      "range": "537..715",
+                      "colors": "black-red"
+                    }
+                  ]
+                },
+                "BottomStrand": {
+                  "ColorRange": [
+                    {
+                      "range": "0..178",
+                      "colors": "blue-black"
+                    },
+                    {
+                      "range": "537..715",
+                      "colors": "black-red"
+                    }
+                  ]
+                }
+              }
+            },
+            "InputSummary": null,
+            "Node": {
+              "name": "linear.dna",
+              "type": "DNA",
+              "seqLen": "716",
+              "strandedness": "double",
+              "ID": "2",
+              "circular": "0",
+              "upstreamModification": "Unmodified",
+              "downstreamModification": "Unmodified",
+              "resurrectable": "2",
+              "Features": {
+                "Feature": [
+                  {
+                    "name": "BtDNAJB9",
+                    "directionality": "1",
+                    "translationMW": "25715.56",
+                    "type": "CDS",
+                    "allowSegmentOverlaps": "0",
+                    "Segment": {
+                      "range": "22-690",
+                      "color": "#00ccff",
+                      "type": "standard"
+                    },
+                    "Q": [
+                      {
+                        "name": "codon_start",
+                        "V": {
+                          "int": "1"
+                        }
+                      },
+                      {
+                        "name": "transl_table",
+                        "V": {
+                          "int": "1"
+                        }
+                      },
+                      {
+                        "name": "translation",
+                        "V": {
+                          "text": "MATPQSVFIFAICILMITELILASKSYYDILGVPKSASERQVKKAFHKLAMKYHPDKNKSPDAEAKFREIAEAYETLSDANRRKEYDTLGHNAFTNGKGQRASGSPFEHSFNFNFDDLFKDFDFFGQNQNTRSKKHFENHFQTRQDGSSRQRHHFQEFSFGGGLFDDMFEDMEKMFSFSGFDTTNNGHTVQTENRFHGSSKHCRTVTQRRGNMVTTYTDCSGQ"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "C Left",
+                    "type": "misc_feature",
+                    "allowSegmentOverlaps": "0",
+                    "Segment": {
+                      "range": "1-12",
+                      "color": "#a6acb3",
+                      "type": "standard"
+                    }
+                  },
+                  {
+                    "name": "C Right",
+                    "type": "misc_feature",
+                    "allowSegmentOverlaps": "0",
+                    "Segment": {
+                      "range": "705-716",
+                      "color": "#a6acb3",
+                      "type": "standard"
+                    }
+                  }
+                ]
+              },
+              "HistoryColors": {
+                "StrandColors": {
+                  "type": "Input",
+                  "TopStrand": {
+                    "ColorRange": [
+                      {
+                        "range": "0..178",
+                        "colors": "blue-black"
+                      },
+                      {
+                        "range": "537..715",
+                        "colors": "black-red"
+                      }
+                    ]
+                  },
+                  "BottomStrand": {
+                    "ColorRange": [
+                      {
+                        "range": "0..178",
+                        "colors": "blue-black"
+                      },
+                      {
+                        "range": "537..715",
+                        "colors": "black-red"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "17": [
+      {
+        "AlignableSequences": {
+          "trimStringency": "Medium"
+        }
+      }
+    ],
+    "8": [
+      {
+        "AdditionalSequenceProperties": {
+          "UpstreamStickiness": "0",
+          "DownstreamStickiness": "0",
+          "UpstreamModification": "FivePrimePhosphorylated",
+          "DownstreamModification": "FivePrimePhosphorylated"
+        }
+      }
+    ],
+    "10": [
+      {
+        "features": [
+          {
+            "name": "C Left",
+            "type": "misc_feature",
+            "strand": ".",
+            "start": 0,
+            "end": 12,
+            "color": "#a6acb3",
+            "segments": [
+              {
+                "range": "1-12",
+                "color": "#a6acb3",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "0",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "C Right",
+            "type": "misc_feature",
+            "strand": ".",
+            "start": 704,
+            "end": 716,
+            "color": "#a6acb3",
+            "segments": [
+              {
+                "range": "705-716",
+                "color": "#a6acb3",
+                "type": "standard"
+              }
+            ],
+            "qualifiers": {},
+            "extras": {
+              "recentID": "1",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1"
+            },
+            "raw_qualifiers": null
+          },
+          {
+            "name": "BtDNAJB9",
+            "type": "CDS",
+            "strand": "+",
+            "start": 21,
+            "end": 690,
+            "color": "#00ccff",
+            "segments": [
+              {
+                "range": "22-690",
+                "color": "#00ccff",
+                "type": "standard",
+                "translated": "1"
+              }
+            ],
+            "qualifiers": {
+              "codon_start": 1,
+              "transl_table": 1,
+              "translation": "MATPQSVFIFAICILMITELILASKSYYDILGVPKSASERQVKKAFHKLAMKYHPDKNKSPDAEAKFREIAEAYETLSDANRRKEYDTLGHNAFTNGKGQRASGSPFEHSFNFNFDDLFKDFDFFGQNQNTRSKKHFENHFQTRQDGSSRQRHHFQEFSFGGGLFDDMFEDMEKMFSFSGFDTTNNGHTVQTENRFHGSSKHCRTVTQRRGNMVTTYTDCSGQ"
+            },
+            "extras": {
+              "recentID": "2",
+              "translationMW": "25715.56",
+              "allowSegmentOverlaps": "0",
+              "consecutiveTranslationNumbering": "1",
+              "maxRunOn": "693",
+              "maxFusedRunOn": "693"
+            },
+            "raw_qualifiers": [
+              {
+                "name": "codon_start",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "transl_table",
+                "V": {
+                  "int": "1"
+                }
+              },
+              {
+                "name": "translation",
+                "V": {
+                  "text": "MATPQSVFIFAICILMITELILASKSYYDILGVPKSASERQVKKAFHKLAMKYHPDKNKSPDAEAKFREIAEAYETLSDANRRKEYDTLGHNAFTNGKGQRASGSPFEHSFNFNFDDLFKDFDFFGQNQNTRSKKHFENHFQTRQDGSSRQRHHFQEFSFGGGLFDDMFEDMEKMFSFSGFDTTNNGHTVQTENRFHGSSKHCRTVTQRRGNMVTTYTDCSGQ"
+                }
+              }
+            ]
+          }
+        ],
+        "wrapper_extras": {
+          "nextValidID": "3"
+        }
+      }
+    ],
+    "5": [
+      {
+        "Primers": {
+          "nextValidID": "0",
+          "HybridizationParams": {
+            "minContinuousMatchLen": "10",
+            "allowMismatch": "1",
+            "minMeltingTemperature": "40",
+            "showAdditionalFivePrimeMatches": "1",
+            "minimumFivePrimeAnnealing": "15"
+          }
+        }
+      }
+    ],
+    "6": [
+      {
+        "Notes": {
+          "UUID": "d3d4cd0f-1c69-4067-8b26-9a523c852438",
+          "Type": "Synthetic",
+          "ConfirmedExperimentally": "0",
+          "Created": {
+            "UTC": "5:11:10",
+            "_text": "2026.5.22"
+          },
+          "LastModified": {
+            "UTC": "5:11:16",
+            "_text": "2026.5.22"
+          },
+          "SequenceClass": "UNA",
+          "TransformedInto": "unspecified"
+        }
+      }
+    ],
+    "14": [
+      {
+        "CustomEnzymeSets": null
+      }
+    ],
+    "28": [
+      {
+        "EnzymeVisibilities": {
+          "vals": ""
+        }
+      }
+    ]
+  }
+}
